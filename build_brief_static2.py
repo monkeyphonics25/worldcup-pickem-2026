@@ -119,6 +119,61 @@ def scenario_table(group):
         rows.append(f'<tr{cls}>{cells}</tr>')
     return '<div class="table-scroll"><table class="scenario">' + ''.join(rows) + '</table></div>'
 
+def names_join(names):
+    fr = [FRIENDLY[n] for n in names]
+    if len(fr) == 1:
+        return fr[0]
+    if len(fr) == 2:
+        return f"{fr[0]} and {fr[1]}"
+    return ', '.join(fr[:-1]) + f", and {fr[-1]}"
+
+def best_for_cluster(gb, score):
+    """Among people whose personal ceiling tonight equals `score`, find the
+    largest group that gets there via the *same* scenario, so we can name
+    them together instead of just picking one person."""
+    best_for = gb['best_for']
+    clusters = {}
+    order_index = {}
+    for idx, name in enumerate(display_order):
+        s, label = best_for[name]
+        if s != score:
+            continue
+        clusters.setdefault(label, []).append(name)
+        order_index.setdefault(label, idx)
+    ordered = sorted(clusters.items(), key=lambda kv: (-len(kv[1]), order_index[kv[0]]))
+    return ordered[0]  # (label, [names]) for the biggest tied cluster
+
+def ceiling_blurb(gb):
+    best_for = gb['best_for']
+    scores = [best_for[name][0] for name in display_order]
+    top_score, bottom_score = max(scores), min(scores)
+
+    top_label, top_names = best_for_cluster(gb, top_score)
+    top_txt = names_join(top_names)
+    if top_score >= 16:
+        if len(top_names) == 1:
+            top_sentence = f'<span class="tag-best">{top_txt}</span> just needs “{top_label}” to complete a perfect group.'
+        else:
+            top_sentence = f'<span class="tag-best">{top_txt}</span> just need “{top_label}” to complete their perfect group.'
+    else:
+        if len(top_names) == 1:
+            top_sentence = f'<span class="tag-best">{top_txt}</span> has the most to gain tonight — a {top_score} is on the table if “{top_label}” happens.'
+        else:
+            top_sentence = f'<span class="tag-best">{top_txt}</span> have the most to gain tonight — “{top_label}” gets them to {top_score}.'
+
+    if bottom_score == top_score:
+        return f'<p class="small" style="margin-top:10px;">{top_sentence}</p>'
+
+    bottom_label, bottom_names = best_for_cluster(gb, bottom_score)
+    bottom_txt = names_join(bottom_names)
+    pts = 'point' if bottom_score == 1 else 'points'
+    if len(bottom_names) == 1:
+        bottom_sentence = f'Wow — <span class="tag-worst">{bottom_txt}</span>’s best hope tonight is {bottom_score} measly {pts} out of this group.'
+    else:
+        bottom_sentence = f'<span class="tag-worst">{bottom_txt}</span>’s shitty picks can only net them a maximum of {bottom_score} {pts} here.'
+
+    return f'<p class="small" style="margin-top:10px;">{top_sentence} {bottom_sentence}</p>'
+
 def leaderboard_table():
     rows = ['<tr><th>Rank</th><th>Bracket</th><th>Points</th></tr>']
     for i, (name, score) in enumerate(leaderboard, 1):
@@ -147,9 +202,7 @@ for g in GROUP_KICKOFF_ORDER:
     parts.append(f'<span class="badge">Group {g}</span><h3>{vs} &middot; {GROUP_TIME[g]}</h3>')
     parts.append(f'<p class="small" style="margin:8px 0 0;">Entering tonight: {standings_line}. ' + ' '.join(gb['match_descriptions']) + '</p>')
     parts.append(scenario_table(g))
-    best_name, (best_score, best_label) = max(gb['best_for'].items(), key=lambda kv: kv[1][0])
-    worst_name, (worst_score, worst_label) = min(gb['worst_for'].items(), key=lambda kv: kv[1][0])
-    parts.append(f'<p class="small" style="margin-top:10px;"><span class="tag-best">{FRIENDLY[best_name]}</span> has the most to gain tonight — a {best_score} is on the table if &ldquo;{best_label}&rdquo; happens. <span class="tag-worst">{FRIENDLY[worst_name]}</span> has the least margin for error — &ldquo;{worst_label}&rdquo; leaves them with just {worst_score}.</p>')
+    parts.append(ceiling_blurb(gb))
     parts.append('</div>')
 
 parts.append('<h2>Tonight’s chalk math</h2>')
@@ -174,7 +227,7 @@ html = f"""<!DOCTYPE html>
 </body>
 </html>"""
 
-outfile = os.path.join(outdir, 'brief_static_2026-06-24_v3.html')
+outfile = os.path.join(outdir, 'brief_static_2026-06-24_v4.html')
 with open(outfile, 'w') as f:
     f.write(html)
 print('wrote', outfile, '(', len(html), 'chars )')
