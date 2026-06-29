@@ -2,146 +2,373 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>World Cup Pick'em Morning Brief, Saturday, June 27</title>
+<title>Cuppies Daily Update — World Cup 2026</title>
 <style>
-:root { color-scheme: light; }
-* { box-sizing: border-box; }
-body {
-  margin: 0; padding: 24px; background: #f4f6f8; color: #1a1f2b;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  line-height: 1.45;
-}
-.wrap { max-width: 1080px; margin: 0 auto; }
-h1 { font-size: 24px; margin: 0 0 4px; }
-h2 { font-size: 18px; margin: 28px 0 10px; border-bottom: 2px solid #e2e6ea; padding-bottom: 6px; }
-h3 { font-size: 15px; margin: 0 0 8px; display:inline-block; }
-.subtitle { color: #5b6573; font-size: 13px; margin-bottom: 18px; }
-.card {
-  background: #fff; border: 1px solid #e2e6ea; border-radius: 10px;
-  padding: 16px 20px; margin-bottom: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-}
-.callout {
-  background: #eef7f0; border: 1px solid #bfe3c8; border-radius: 10px;
-  padding: 16px 20px; margin-bottom: 14px;
-}
-.badge {
-  display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px;
-  border-radius: 999px; background: #d9ecff; color: #14538f; margin-right: 8px;
-  vertical-align: middle;
-}
-table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 0; }
-th, td { text-align: center; padding: 6px 5px; border-bottom: 1px solid #edf0f3; overflow: hidden; }
-th:first-child, td:first-child { text-align: left; }
-th { color: #5b6573; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: .03em; white-space: nowrap; }
-.table-scroll { overflow-x: auto; margin: 10px 0 4px; -webkit-overflow-scrolling: touch; }
-table.scenario { table-layout: fixed; min-width: 900px; }
-table.scenario th:first-child, table.scenario td:first-child { width: 190px; }
-table.leaderboard { max-width: 480px; }
-table.leaderboard td:first-child, table.leaderboard th:first-child { text-align: center; }
-.match-line { margin-bottom: 3px; }
-.match-line:last-child { margin-bottom: 0; }
-.pill { display: inline-block; border-radius: 6px; padding: 2px 6px; font-weight: 500; margin-right: 4px; font-size: 11px; white-space: nowrap; }
-.pill-win { background: #d7f0dd; color: #1c6b34; }
-.pill-loss { background: #fbe2e2; color: #9c2b2b; }
-.pill-draw { background: #e9e8e3; color: #5f5e5a; }
-tr.chalk { background: #d9ecff; }
-tr.chalk td { font-weight: 700; }
-td.score { font-weight: 700; border-radius: 6px; }
-td.score-green { background: #d7f0dd; color: #1c6b34; }
-td.score-yellow { background: #fdf1d6; color: #8a6d00; }
-td.score-red { background: #fbe2e2; color: #9c2b2b; }
-.small { font-size: 12px; color: #5b6573; }
-.tag-best { color: #1c6b34; font-weight: 700; }
-.tag-worst { color: #9c2b2b; font-weight: 700; }
-.lb-rank1 td { background: #eef7f0; font-weight: 700; }
-.people-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
-.people-grid a {
-  display: inline-block; padding: 6px 12px; border-radius: 999px; background: #d9ecff;
-  color: #14538f; text-decoration: none; font-size: 13px; font-weight: 600;
-}
-.people-grid a:hover { background: #c3e0ff; }
-footer { margin-top: 30px; padding-top: 14px; border-top: 1px solid #e2e6ea; font-size: 11.5px; color: #8a93a1; }
-
-/* diagonal split cells fill the entire <td> edge to edge */
-td.split-cell { padding: 0; height: 40px; position: relative; cursor: help; overflow: visible; }
-.split-fill { position: absolute; inset: 0; background: #fff; }
-.split-fill .tri { position: absolute; inset: 0; }
-.split-fill .tri-a { clip-path: polygon(0 0, calc(100% - 3px) 0, 0 calc(100% - 3px)); }
-.split-fill .tri-b { clip-path: polygon(100% 3px, 100% 100%, 3px 100%); }
-.split-fill .num { position: absolute; font-weight: 700; font-size: 11px; }
-.split-fill .num-a { left: 6px; top: 4px; }
-.split-fill .num-b { right: 6px; bottom: 4px; }
-.bg-green { background: #d7f0dd; } .fg-green { color: #1c6b34; }
-.bg-yellow { background: #fdf1d6; } .fg-yellow { color: #8a6d00; }
-.bg-red { background: #fbe2e2; } .fg-red { color: #9c2b2b; }
-
-/* hover tooltip, pops above the cell by default */
-.tip {
-  position: absolute; left: 50%; bottom: calc(100% + 8px); transform: translateX(-50%);
-  width: 230px; background: #1a1f2b; color: #eef1f5; border-radius: 8px;
-  padding: 10px 12px; font-size: 11.5px; line-height: 1.5; text-align: left;
-  opacity: 0; visibility: hidden; transition: opacity .12s ease; z-index: 50;
-  pointer-events: none; box-shadow: 0 6px 18px rgba(0,0,0,0.22);
-}
-.tip::after {
-  content: ""; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
-  border: 6px solid transparent; border-top-color: #1a1f2b;
-}
-td.split-cell:hover .tip,
-td.split-cell.tip-open .tip { opacity: 1; visibility: visible; }
-/* first few scenario rows sit right under the header with no room above,
-   so their tooltip opens downward instead of upward */
-tr.tip-flip .tip {
-  bottom: auto; top: calc(100% + 8px);
-}
-tr.tip-flip .tip::after {
-  top: auto; bottom: 100%; border-top-color: transparent; border-bottom-color: #1a1f2b;
-}
-.tip-flags { font-weight: 600; margin-bottom: 8px; }
-.tip-flags div { white-space: nowrap; }
-.tip-title { font-weight: 700; margin-bottom: 4px; }
-.tip-list { margin: 0; padding-left: 16px; }
-.tip-list li { margin-bottom: 2px; }
-.tip-status { color: #aab3c0; }
-
-@media (max-width: 600px) {
-  body { padding: 14px; }
-  h1 { font-size: 20px; }
-  .card, .callout { padding: 14px 16px; }
-  table.scenario { min-width: 760px; }
-  table.scenario th:first-child, table.scenario td:first-child { width: 160px; }
-  table.leaderboard { max-width: 100%; font-size: 18px; }
-  table.leaderboard th, td.score { border-radius: 5px; }
-  table.leaderboard th, table.leaderboard td { padding: 14px 12px; }
-  table.leaderboard th { font-size: 14px; }
-}
-@media (max-width: 420px) {
-  table.leaderboard { font-size: 19px; }
-  table.leaderboard th, table.leaderboard td { padding: 15px 10px; }
-}
+  :root{
+    --navy:#0c1b2e;
+    --navy2:#132840;
+    --green:#16a085;
+    --green2:#1abc9c;
+    --red:#e74c3c;
+    --gold:#f1c40f;
+    --text:#e8eef5;
+    --muted:#9fb3c8;
+    --card:#15304a;
+    --border:#234a68;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:linear-gradient(180deg,var(--navy) 0%, #0a1622 100%);
+    color:var(--text);
+    line-height:1.5;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:24px 18px 80px;}
+  header.top{
+    text-align:center;
+    padding:36px 16px 28px;
+  }
+  header.top .kicker{
+    color:var(--green2);
+    letter-spacing:3px;
+    font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+  }
+  header.top h1{
+    margin:8px 0 6px;
+    font-size:clamp(28px,5vw,42px);
+    line-height:1.15;
+  }
+  header.top .date{
+    color:var(--muted);
+    font-size:15px;
+  }
+  section{margin-top:42px;}
+  h2.section-title{
+    font-size:13px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--green2);
+    border-bottom:1px solid var(--border);
+    padding-bottom:10px;
+    margin-bottom:18px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  table.board{
+    width:100%;
+    border-collapse:collapse;
+    background:var(--card);
+    border-radius:12px;
+    overflow:hidden;
+    font-size:14.5px;
+  }
+  table.board th{
+    text-align:left;
+    background:#0f2236;
+    color:var(--muted);
+    font-size:11px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    padding:12px 10px;
+  }
+  table.board td{
+    padding:12px 10px;
+    border-top:1px solid var(--border);
+    vertical-align:middle;
+  }
+  table.board tr.me td{background:rgba(26,188,156,0.08);}
+  .rank{font-weight:800;color:var(--gold);width:30px;}
+  .player{font-weight:700;}
+  .delta{font-weight:800;}
+  .delta.up{color:#2ecc71;}
+  .delta.flat{color:#7f8c9b;}
+  .pick-pill{
+    display:inline-block;
+    background:#0f2236;
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:3px 10px;
+    font-size:12px;
+    color:var(--muted);
+  }
+  .recap-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:22px 22px 18px;
+  }
+  .score-line{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    font-size:clamp(22px,4vw,30px);
+    font-weight:800;
+    margin:6px 0 14px;
+  }
+  .score-line .vs{color:var(--muted);font-size:14px;font-weight:600;}
+  .score-sub{
+    text-align:center;
+    color:var(--muted);
+    font-size:13px;
+    margin-bottom:18px;
+  }
+  .recap-card p{margin:0 0 12px;font-size:15px;}
+  .recap-card p:last-child{margin-bottom:0;}
+  .winners-row, .losers-row{
+    margin-top:10px;
+    font-size:14px;
+  }
+  .winners-row b{color:#2ecc71;}
+  .losers-row b{color:var(--red);}
+  .game-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:20px 22px;
+    margin-bottom:18px;
+  }
+  .game-head{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:8px;
+    margin-bottom:6px;
+  }
+  .matchup{font-size:19px;font-weight:800;}
+  .game-meta{color:var(--muted);font-size:13px;}
+  .game-card p{font-size:14.5px;margin:10px 0;}
+  .odds-tag{
+    display:inline-block;
+    background:rgba(241,196,15,0.12);
+    color:var(--gold);
+    border:1px solid rgba(241,196,15,0.35);
+    border-radius:8px;
+    padding:2px 8px;
+    font-size:12px;
+    font-weight:700;
+    margin-left:6px;
+  }
+  .picks-block{
+    margin-top:14px;
+    padding-top:12px;
+    border-top:1px dashed var(--border);
+    font-size:13.5px;
+  }
+  .picks-block .side{margin-bottom:6px;}
+  .picks-block .side b{color:var(--text);}
+  .ptw-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:16px 20px;
+    margin-bottom:12px;
+  }
+  .ptw-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .ptw-name{font-size:16px;font-weight:800;}
+  .ptw-tag{
+    font-size:11px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    padding:3px 9px;
+    border-radius:20px;
+  }
+  .tag-alive{background:rgba(46,204,113,0.15);color:#2ecc71;border:1px solid rgba(46,204,113,0.4);}
+  .tag-slim{background:rgba(241,196,15,0.15);color:var(--gold);border:1px solid rgba(241,196,15,0.4);}
+  .tag-dead{background:rgba(231,76,60,0.15);color:var(--red);border:1px solid rgba(231,76,60,0.4);}
+  .ptw-meta{color:var(--muted);font-size:13px;margin:6px 0 8px;}
+  .ptw-card p{margin:0;font-size:14px;}
+  footer{
+    text-align:center;
+    color:var(--muted);
+    font-size:12px;
+    margin-top:50px;
+    padding-top:20px;
+    border-top:1px solid var(--border);
+  }
+  @media (max-width:600px){
+    table.board{font-size:12.5px;}
+    table.board th, table.board td{padding:9px 6px;}
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
-<h1>⚽ World Cup Pick'em Morning Brief</h1><div class="subtitle">Saturday, June 27, 2026</div><div class="card">It’s the final day of the group stage. Groups G, H, and I wrapped up their slates last night: Belgium beat New Zealand 5-1 to leapfrog Egypt (1-1 with Iran) on goal difference and take Group G; Spain closed out Group H with a 1-0 win over Uruguay while plucky Cabo Verde drew Saudi Arabia 0-0 to grab second; and France throttled Norway 4-1 to win Group I as Senegal’s 5-0 demolition of Iraq kept their own knockout hopes very much alive. Today, Groups J, K, and L play their matchday-3 deciders, each group’s two matches kicking off at the same time, and once those final whistles blow, all twelve groups are official. Here’s what today’s results mean for all eleven brackets.</div><div class="callout"><strong>Not sure who to root for?</strong> Each person has their own page below showing exactly which results today get them their best possible score in each group.<div class="people-grid"><a href="rooting-karly.html">Karly</a><a href="rooting-art.html">Art</a><a href="rooting-john.html">John</a><a href="rooting-adam.html">Adam</a><a href="rooting-kim.html">Kim</a><a href="rooting-travis.html">Travis</a><a href="rooting-alex.html">Alex</a><a href="rooting-dion.html">Dion</a><a href="rooting-tommy.html">Tommy</a><a href="rooting-mike.html">Mike</a><a href="rooting-sean.html">Sean</a></div></div><h2>Where everyone stands</h2><div class="small" style="margin-bottom:8px;">Counting only groups that have played all three matchdays (A, B, C, D, E, F, G, H, I, out of 144 possible points).</div><div class="card"><table class="leaderboard"><tr><th>Rank</th><th>Bracket</th><th>Points</th></tr><tr class="lb-rank1"><td>1</td><td>Karly</td><td>107</td></tr><tr class="lb-rank1"><td>2</td><td>Art</td><td>90</td></tr><tr class="lb-rank1"><td>3</td><td>John</td><td>87</td></tr><tr><td>4</td><td>Adam</td><td>85</td></tr><tr><td>5</td><td>Kim</td><td>85</td></tr><tr><td>6</td><td>Travis</td><td>75</td></tr><tr><td>7</td><td>Alex</td><td>74</td></tr><tr><td>8</td><td>Dion</td><td>70</td></tr><tr><td>9</td><td>Tommy</td><td>70</td></tr><tr><td>10</td><td>Mike</td><td>68</td></tr><tr><td>11</td><td>Sean</td><td>53</td></tr></table><p class="small" style="margin-top:10px;"><span class="tag-best">Karly</span> leads the way at 107 points, with Art and John rounding out the top three. <span class="tag-best">Karly</span> is starting to separate from the pack, a 17-point cushion over Art for second. And today looks like another good one for her: if every favorite wins as expected across today’s three groups, she cards a perfect 48, more than anyone else in the pool can claim. In the lonely depths of 11th place, <span class="tag-worst">Sean</span> is nursing a measly 53 points. That’s less than half of <span class="tag-best">Karly</span>’s total. Someone get Sean a pair of glasses while they’re at it, the next round of picks is right around the corner. <span class="tag-best">Karly and Tommy</span> tied for the best day of anyone, 37 new points apiece, while <span class="tag-worst">Alex</span> had the quietest day of anyone, managing just 14, falling from 3rd to 7th.</p></div><div class="card"><span class="badge">Group L</span><h3>Panama vs. England &amp; Croatia vs. Ghana &middot; 2pm PT</h3><p class="small" style="margin:8px 0 0;">Entering today: England (4 pts), Ghana (4 pts), Croatia (3 pts), Panama (0 pts). England is a heavy favorite over Panama. Croatia is a slight favorite over Ghana. There's a real chance this one ends level. Keep an eye out for a potential tiebreaker between England and Ghana.</p><div class="table-scroll"><table class="scenario"><tr><th>If this happens</th><th>Karly</th><th>Art</th><th>John</th><th>Adam</th><th>Kim</th><th>Travis</th><th>Alex</th><th>Dion</th><th>Tommy</th><th>Mike</th><th>Sean</th></tr><tr class="tip-flip"><td><div class="match-line"><span class="pill pill-win">Panama</span><span class="pill pill-loss">England</span></div><div class="match-line"><span class="pill pill-win">Croatia</span><span class="pill pill-loss">Ghana</span></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-red"></div><div class="tri tri-b bg-red"></div><span class="num num-a fg-red">4</span><span class="num num-b fg-red">2</span></div><div class="tip"><div class="tip-flags"><div>🚩 England wins tiebreak &nbsp;↖</div><div>🚩 Ghana wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(England leads by 1)</span></li><li>Overall goals scored <span class="tip-status">(England leads by 3)</span></li><li>Fair play ranking <span class="tip-status">(England leads by 1)</span></li><li>Official seeding <span class="tip-status">(England ahead)</span></li></ol></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-red"></div><div class="tri tri-b bg-red"></div><span class="num num-a fg-red">0</span><span class="num num-b fg-red">0</span></div><div class="tip"><div class="tip-flags"><div>🚩 England wins tiebreak &nbsp;↖</div><div>🚩 Ghana wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(England leads by 1)</span></li><li>Overall goals scored <span class="tip-status">(England leads by 3)</span></li><li>Fair play ranking <span class="tip-status">(England leads by 1)</span></li><li>Official seeding <span class="tip-status">(England ahead)</span></li></ol></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-red"></div><div class="tri tri-b bg-red"></div><span class="num num-a fg-red">4</span><span class="num num-b fg-red">2</span></div><div class="tip"><div class="tip-flags"><div>🚩 England wins tiebreak &nbsp;↖</div><div>🚩 Ghana wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(England leads by 1)</span></li><li>Overall goals scored <span class="tip-status">(England leads by 3)</span></li><li>Fair play ranking <span class="tip-status">(England leads by 1)</span></li><li>Official seeding <span class="tip-status">(England ahead)</span></li></ol></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-red"></div><div class="tri tri-b bg-red"></div><span class="num num-a fg-red">0</span><span class="num num-b fg-red">0</span></div><div class="tip"><div class="tip-flags"><div>🚩 England wins tiebreak &nbsp;↖</div><div>🚩 Ghana wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(England leads by 1)</span></li><li>Overall goals scored <span class="tip-status">(England leads by 3)</span></li><li>Fair play ranking <span class="tip-status">(England leads by 1)</span></li><li>Official seeding <span class="tip-status">(England ahead)</span></li></ol></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-red"></div><div class="tri tri-b bg-red"></div><span class="num num-a fg-red">0</span><span class="num num-b fg-red">0</span></div><div class="tip"><div class="tip-flags"><div>🚩 England wins tiebreak &nbsp;↖</div><div>🚩 Ghana wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(England leads by 1)</span></li><li>Overall goals scored <span class="tip-status">(England leads by 3)</span></li><li>Fair play ranking <span class="tip-status">(England leads by 1)</span></li><li>Official seeding <span class="tip-status">(England ahead)</span></li></ol></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-red"></div><div class="tri tri-b bg-red"></div><span class="num num-a fg-red">4</span><span class="num num-b fg-red">2</span></div><div class="tip"><div class="tip-flags"><div>🚩 England wins tiebreak &nbsp;↖</div><div>🚩 Ghana wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(England leads by 1)</span></li><li>Overall goals scored <span class="tip-status">(England leads by 3)</span></li><li>Fair play ranking <span class="tip-status">(England leads by 1)</span></li><li>Official seeding <span class="tip-status">(England ahead)</span></li></ol></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-red"></div><div class="tri tri-b bg-red"></div><span class="num num-a fg-red">0</span><span class="num num-b fg-red">0</span></div><div class="tip"><div class="tip-flags"><div>🚩 England wins tiebreak &nbsp;↖</div><div>🚩 Ghana wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(England leads by 1)</span></li><li>Overall goals scored <span class="tip-status">(England leads by 3)</span></li><li>Fair play ranking <span class="tip-status">(England leads by 1)</span></li><li>Official seeding <span class="tip-status">(England ahead)</span></li></ol></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-red"></div><div class="tri tri-b bg-red"></div><span class="num num-a fg-red">4</span><span class="num num-b fg-red">2</span></div><div class="tip"><div class="tip-flags"><div>🚩 England wins tiebreak &nbsp;↖</div><div>🚩 Ghana wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(England leads by 1)</span></li><li>Overall goals scored <span class="tip-status">(England leads by 3)</span></li><li>Fair play ranking <span class="tip-status">(England leads by 1)</span></li><li>Official seeding <span class="tip-status">(England ahead)</span></li></ol></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-red"></div><div class="tri tri-b bg-red"></div><span class="num num-a fg-red">4</span><span class="num num-b fg-red">2</span></div><div class="tip"><div class="tip-flags"><div>🚩 England wins tiebreak &nbsp;↖</div><div>🚩 Ghana wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(England leads by 1)</span></li><li>Overall goals scored <span class="tip-status">(England leads by 3)</span></li><li>Fair play ranking <span class="tip-status">(England leads by 1)</span></li><li>Official seeding <span class="tip-status">(England ahead)</span></li></ol></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-green"></div><div class="tri tri-b bg-yellow"></div><span class="num num-a fg-green">10</span><span class="num num-b fg-yellow">5</span></div><div class="tip"><div class="tip-flags"><div>🚩 England wins tiebreak &nbsp;↖</div><div>🚩 Ghana wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(England leads by 1)</span></li><li>Overall goals scored <span class="tip-status">(England leads by 3)</span></li><li>Fair play ranking <span class="tip-status">(England leads by 1)</span></li><li>Official seeding <span class="tip-status">(England ahead)</span></li></ol></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-red"></div><div class="tri tri-b bg-red"></div><span class="num num-a fg-red">0</span><span class="num num-b fg-red">0</span></div><div class="tip"><div class="tip-flags"><div>🚩 England wins tiebreak &nbsp;↖</div><div>🚩 Ghana wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(England leads by 1)</span></li><li>Overall goals scored <span class="tip-status">(England leads by 3)</span></li><li>Fair play ranking <span class="tip-status">(England leads by 1)</span></li><li>Official seeding <span class="tip-status">(England ahead)</span></li></ol></div></td></tr><tr class="tip-flip"><td><div class="match-line"><span class="pill pill-win">Panama</span><span class="pill pill-loss">England</span></div><div class="match-line"><span class="pill pill-draw">Croatia</span><span class="pill pill-draw">Ghana</span></div></td><td class="score score-red">2</td><td class="score score-red">0</td><td class="score score-red">2</td><td class="score score-red">0</td><td class="score score-red">0</td><td class="score score-red">2</td><td class="score score-red">2</td><td class="score score-red">2</td><td class="score score-red">2</td><td class="score score-yellow">5</td><td class="score score-red">2</td></tr><tr class="tip-flip"><td><div class="match-line"><span class="pill pill-win">Panama</span><span class="pill pill-loss">England</span></div><div class="match-line"><span class="pill pill-loss">Croatia</span><span class="pill pill-win">Ghana</span></div></td><td class="score score-red">2</td><td class="score score-red">0</td><td class="score score-red">2</td><td class="score score-red">0</td><td class="score score-red">0</td><td class="score score-red">2</td><td class="score score-red">2</td><td class="score score-red">2</td><td class="score score-red">2</td><td class="score score-yellow">5</td><td class="score score-red">2</td></tr><tr class="tip-flip"><td><div class="match-line"><span class="pill pill-draw">Panama</span><span class="pill pill-draw">England</span></div><div class="match-line"><span class="pill pill-win">Croatia</span><span class="pill pill-loss">Ghana</span></div></td><td class="score score-red">4</td><td class="score score-red">0</td><td class="score score-red">4</td><td class="score score-red">0</td><td class="score score-red">0</td><td class="score score-red">4</td><td class="score score-red">0</td><td class="score score-red">4</td><td class="score score-red">4</td><td class="score score-green">10</td><td class="score score-red">0</td></tr><tr><td><div class="match-line"><span class="pill pill-draw">Panama</span><span class="pill pill-draw">England</span></div><div class="match-line"><span class="pill pill-draw">Croatia</span><span class="pill pill-draw">Ghana</span></div></td><td class="score score-yellow">7</td><td class="score score-yellow">5</td><td class="score score-yellow">7</td><td class="score score-yellow">5</td><td class="score score-yellow">5</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-red">0</td><td class="score score-yellow">7</td></tr><tr><td><div class="match-line"><span class="pill pill-draw">Panama</span><span class="pill pill-draw">England</span></div><div class="match-line"><span class="pill pill-loss">Croatia</span><span class="pill pill-win">Ghana</span></div></td><td class="score score-red">2</td><td class="score score-red">0</td><td class="score score-red">2</td><td class="score score-red">0</td><td class="score score-red">0</td><td class="score score-red">2</td><td class="score score-red">2</td><td class="score score-red">2</td><td class="score score-red">2</td><td class="score score-yellow">5</td><td class="score score-red">2</td></tr><tr class="chalk"><td><div class="match-line"><span class="pill pill-loss">Panama</span><span class="pill pill-win">England</span></div><div class="match-line"><span class="pill pill-win">Croatia</span><span class="pill pill-loss">Ghana</span></div></td><td class="score score-green">16</td><td class="score score-green">10</td><td class="score score-green">16</td><td class="score score-green">10</td><td class="score score-green">10</td><td class="score score-green">16</td><td class="score score-yellow">5</td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-red">0</td><td class="score score-yellow">5</td></tr><tr><td><div class="match-line"><span class="pill pill-loss">Panama</span><span class="pill pill-win">England</span></div><div class="match-line"><span class="pill pill-draw">Croatia</span><span class="pill pill-draw">Ghana</span></div></td><td class="score score-yellow">7</td><td class="score score-yellow">5</td><td class="score score-yellow">7</td><td class="score score-yellow">5</td><td class="score score-yellow">5</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-red">0</td><td class="score score-yellow">7</td></tr><tr><td><div class="match-line"><span class="pill pill-loss">Panama</span><span class="pill pill-win">England</span></div><div class="match-line"><span class="pill pill-loss">Croatia</span><span class="pill pill-win">Ghana</span></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-yellow"></div><div class="tri tri-b bg-red"></div><span class="num num-a fg-yellow">7</span><span class="num num-b fg-red">2</span></div><div class="tip"><div class="tip-flags"><div>🚩 England wins tiebreak &nbsp;↖</div><div>🚩 Ghana wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(England leads by 1)</span></li><li>Overall goals scored <span class="tip-status">(England leads by 3)</span></li><li>Fair play ranking <span class="tip-status">(England leads by 1)</span></li><li>Official seeding <span class="tip-status">(England ahead)</span></li></ol></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-yellow"></div><div class="tri tri-b bg-red"></div><span class="num num-a fg-yellow">5</span><span class="num num-b fg-red">0</span></div><div class="tip"><div class="tip-flags"><div>🚩 England wins tiebreak &nbsp;↖</div><div>🚩 Ghana wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(England leads by 1)</span></li><li>Overall goals scored <span class="tip-status">(England leads by 3)</span></li><li>Fair play ranking <span class="tip-status">(England leads by 1)</span></li><li>Official seeding <span class="tip-status">(England ahead)</span></li></ol></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-yellow"></div><div class="tri tri-b bg-red"></div><span class="num num-a fg-yellow">7</span><span class="num num-b fg-red">2</span></div><div class="tip"><div class="tip-flags"><div>🚩 England wins tiebreak &nbsp;↖</div><div>🚩 Ghana wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(England leads by 1)</span></li><li>Overall goals scored <span class="tip-status">(England leads by 3)</span></li><li>Fair play ranking <span class="tip-status">(England leads by 1)</span></li><li>Official seeding <span class="tip-status">(England ahead)</span></li></ol></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-yellow"></div><div class="tri tri-b bg-red"></div><span class="num num-a fg-yellow">5</span><span class="num num-b fg-red">0</span></div><div class="tip"><div class="tip-flags"><div>🚩 England wins tiebreak &nbsp;↖</div><div>🚩 Ghana wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(England leads by 1)</span></li><li>Overall goals scored <span class="tip-status">(England leads by 3)</span></li><li>Fair play ranking <span class="tip-status">(England leads by 1)</span></li><li>Official seeding <span class="tip-status">(England ahead)</span></li></ol></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-yellow"></div><div class="tri tri-b bg-red"></div><span class="num num-a fg-yellow">5</span><span class="num num-b fg-red">0</span></div><div class="tip"><div class="tip-flags"><div>🚩 England wins tiebreak &nbsp;↖</div><div>🚩 Ghana wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(England leads by 1)</span></li><li>Overall goals scored <span class="tip-status">(England leads by 3)</span></li><li>Fair play ranking <span class="tip-status">(England leads by 1)</span></li><li>Official seeding <span class="tip-status">(England ahead)</span></li></ol></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-yellow"></div><div class="tri tri-b bg-red"></div><span class="num num-a fg-yellow">7</span><span class="num num-b fg-red">2</span></div><div class="tip"><div class="tip-flags"><div>🚩 England wins tiebreak &nbsp;↖</div><div>🚩 Ghana wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(England leads by 1)</span></li><li>Overall goals scored <span class="tip-status">(England leads by 3)</span></li><li>Fair play ranking <span class="tip-status">(England leads by 1)</span></li><li>Official seeding <span class="tip-status">(England ahead)</span></li></ol></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-yellow"></div><div class="tri tri-b bg-red"></div><span class="num num-a fg-yellow">7</span><span class="num num-b fg-red">2</span></div><div class="tip"><div class="tip-flags"><div>🚩 England wins tiebreak &nbsp;↖</div><div>🚩 Ghana wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(England leads by 1)</span></li><li>Overall goals scored <span class="tip-status">(England leads by 3)</span></li><li>Fair play ranking <span class="tip-status">(England leads by 1)</span></li><li>Official seeding <span class="tip-status">(England ahead)</span></li></ol></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-yellow"></div><div class="tri tri-b bg-red"></div><span class="num num-a fg-yellow">7</span><span class="num num-b fg-red">2</span></div><div class="tip"><div class="tip-flags"><div>🚩 England wins tiebreak &nbsp;↖</div><div>🚩 Ghana wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(England leads by 1)</span></li><li>Overall goals scored <span class="tip-status">(England leads by 3)</span></li><li>Fair play ranking <span class="tip-status">(England leads by 1)</span></li><li>Official seeding <span class="tip-status">(England ahead)</span></li></ol></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-yellow"></div><div class="tri tri-b bg-red"></div><span class="num num-a fg-yellow">7</span><span class="num num-b fg-red">2</span></div><div class="tip"><div class="tip-flags"><div>🚩 England wins tiebreak &nbsp;↖</div><div>🚩 Ghana wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(England leads by 1)</span></li><li>Overall goals scored <span class="tip-status">(England leads by 3)</span></li><li>Fair play ranking <span class="tip-status">(England leads by 1)</span></li><li>Official seeding <span class="tip-status">(England ahead)</span></li></ol></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-red"></div><div class="tri tri-b bg-yellow"></div><span class="num num-a fg-red">0</span><span class="num num-b fg-yellow">5</span></div><div class="tip"><div class="tip-flags"><div>🚩 England wins tiebreak &nbsp;↖</div><div>🚩 Ghana wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(England leads by 1)</span></li><li>Overall goals scored <span class="tip-status">(England leads by 3)</span></li><li>Fair play ranking <span class="tip-status">(England leads by 1)</span></li><li>Official seeding <span class="tip-status">(England ahead)</span></li></ol></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-yellow"></div><div class="tri tri-b bg-red"></div><span class="num num-a fg-yellow">7</span><span class="num num-b fg-red">2</span></div><div class="tip"><div class="tip-flags"><div>🚩 England wins tiebreak &nbsp;↖</div><div>🚩 Ghana wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(England leads by 1)</span></li><li>Overall goals scored <span class="tip-status">(England leads by 3)</span></li><li>Fair play ranking <span class="tip-status">(England leads by 1)</span></li><li>Official seeding <span class="tip-status">(England ahead)</span></li></ol></div></td></tr></table></div><p class="small" style="margin-top:10px;"><span class="tag-best">Karly, John, Travis, Dion, and Tommy</span> just need “England win & Croatia win” to complete their perfect group. Let’s see it. <span class="tag-worst">Alex and Sean</span> picked their way into a dumpster fire here; 7 points is the max payout for the trouble.</p></div><div class="card"><span class="badge">Group K</span><h3>Colombia vs. Portugal &amp; Congo DR vs. Uzbekistan &middot; 4:30pm PT</h3><p class="small" style="margin:8px 0 0;">Entering today: Colombia (6 pts), Portugal (4 pts), Congo DR (1 pts), Uzbekistan (0 pts). Portugal is barely ahead of Colombia — about as close to a coin flip as this slate gets. Congo DR is a slight favorite over Uzbekistan. Keep an eye out for a potential tiebreaker between Congo DR and Portugal.</p><div class="table-scroll"><table class="scenario"><tr><th>If this happens</th><th>Karly</th><th>Art</th><th>John</th><th>Adam</th><th>Kim</th><th>Travis</th><th>Alex</th><th>Dion</th><th>Tommy</th><th>Mike</th><th>Sean</th></tr><tr class="tip-flip"><td><div class="match-line"><span class="pill pill-win">Colombia</span><span class="pill pill-loss">Portugal</span></div><div class="match-line"><span class="pill pill-win">Congo DR</span><span class="pill pill-loss">Uzbekistan</span></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-red"></div><div class="tri tri-b bg-red"></div><span class="num num-a fg-red">4</span><span class="num num-b fg-red">2</span></div><div class="tip"><div class="tip-flags"><div>🚩 Portugal wins tiebreak &nbsp;↖</div><div>🚩 Congo DR wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(Portugal leads by 4)</span></li><li>Overall goals scored <span class="tip-status">(Portugal leads by 4)</span></li><li>Fair play ranking <span class="tip-status">(Congo DR leads by 2)</span></li><li>Official seeding <span class="tip-status">(Portugal ahead)</span></li></ol></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-red"></div><div class="tri tri-b bg-red"></div><span class="num num-a fg-red">4</span><span class="num num-b fg-red">2</span></div><div class="tip"><div class="tip-flags"><div>🚩 Portugal wins tiebreak &nbsp;↖</div><div>🚩 Congo DR wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(Portugal leads by 4)</span></li><li>Overall goals scored <span class="tip-status">(Portugal leads by 4)</span></li><li>Fair play ranking <span class="tip-status">(Congo DR leads by 2)</span></li><li>Official seeding <span class="tip-status">(Portugal ahead)</span></li></ol></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-green"></div><div class="tri tri-b bg-yellow"></div><span class="num num-a fg-green">16</span><span class="num num-b fg-yellow">7</span></div><div class="tip"><div class="tip-flags"><div>🚩 Portugal wins tiebreak &nbsp;↖</div><div>🚩 Congo DR wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(Portugal leads by 4)</span></li><li>Overall goals scored <span class="tip-status">(Portugal leads by 4)</span></li><li>Fair play ranking <span class="tip-status">(Congo DR leads by 2)</span></li><li>Official seeding <span class="tip-status">(Portugal ahead)</span></li></ol></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-green"></div><div class="tri tri-b bg-yellow"></div><span class="num num-a fg-green">16</span><span class="num num-b fg-yellow">7</span></div><div class="tip"><div class="tip-flags"><div>🚩 Portugal wins tiebreak &nbsp;↖</div><div>🚩 Congo DR wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(Portugal leads by 4)</span></li><li>Overall goals scored <span class="tip-status">(Portugal leads by 4)</span></li><li>Fair play ranking <span class="tip-status">(Congo DR leads by 2)</span></li><li>Official seeding <span class="tip-status">(Portugal ahead)</span></li></ol></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-red"></div><div class="tri tri-b bg-red"></div><span class="num num-a fg-red">4</span><span class="num num-b fg-red">2</span></div><div class="tip"><div class="tip-flags"><div>🚩 Portugal wins tiebreak &nbsp;↖</div><div>🚩 Congo DR wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(Portugal leads by 4)</span></li><li>Overall goals scored <span class="tip-status">(Portugal leads by 4)</span></li><li>Fair play ranking <span class="tip-status">(Congo DR leads by 2)</span></li><li>Official seeding <span class="tip-status">(Portugal ahead)</span></li></ol></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-green"></div><div class="tri tri-b bg-yellow"></div><span class="num num-a fg-green">16</span><span class="num num-b fg-yellow">7</span></div><div class="tip"><div class="tip-flags"><div>🚩 Portugal wins tiebreak &nbsp;↖</div><div>🚩 Congo DR wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(Portugal leads by 4)</span></li><li>Overall goals scored <span class="tip-status">(Portugal leads by 4)</span></li><li>Fair play ranking <span class="tip-status">(Congo DR leads by 2)</span></li><li>Official seeding <span class="tip-status">(Portugal ahead)</span></li></ol></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-green"></div><div class="tri tri-b bg-yellow"></div><span class="num num-a fg-green">10</span><span class="num num-b fg-yellow">5</span></div><div class="tip"><div class="tip-flags"><div>🚩 Portugal wins tiebreak &nbsp;↖</div><div>🚩 Congo DR wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(Portugal leads by 4)</span></li><li>Overall goals scored <span class="tip-status">(Portugal leads by 4)</span></li><li>Fair play ranking <span class="tip-status">(Congo DR leads by 2)</span></li><li>Official seeding <span class="tip-status">(Portugal ahead)</span></li></ol></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-red"></div><div class="tri tri-b bg-red"></div><span class="num num-a fg-red">4</span><span class="num num-b fg-red">2</span></div><div class="tip"><div class="tip-flags"><div>🚩 Portugal wins tiebreak &nbsp;↖</div><div>🚩 Congo DR wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(Portugal leads by 4)</span></li><li>Overall goals scored <span class="tip-status">(Portugal leads by 4)</span></li><li>Fair play ranking <span class="tip-status">(Congo DR leads by 2)</span></li><li>Official seeding <span class="tip-status">(Portugal ahead)</span></li></ol></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-red"></div><div class="tri tri-b bg-red"></div><span class="num num-a fg-red">4</span><span class="num num-b fg-red">2</span></div><div class="tip"><div class="tip-flags"><div>🚩 Portugal wins tiebreak &nbsp;↖</div><div>🚩 Congo DR wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(Portugal leads by 4)</span></li><li>Overall goals scored <span class="tip-status">(Portugal leads by 4)</span></li><li>Fair play ranking <span class="tip-status">(Congo DR leads by 2)</span></li><li>Official seeding <span class="tip-status">(Portugal ahead)</span></li></ol></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-green"></div><div class="tri tri-b bg-yellow"></div><span class="num num-a fg-green">16</span><span class="num num-b fg-yellow">7</span></div><div class="tip"><div class="tip-flags"><div>🚩 Portugal wins tiebreak &nbsp;↖</div><div>🚩 Congo DR wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(Portugal leads by 4)</span></li><li>Overall goals scored <span class="tip-status">(Portugal leads by 4)</span></li><li>Fair play ranking <span class="tip-status">(Congo DR leads by 2)</span></li><li>Official seeding <span class="tip-status">(Portugal ahead)</span></li></ol></div></td><td class="split-cell"><div class="split-fill"><div class="tri tri-a bg-red"></div><div class="tri tri-b bg-red"></div><span class="num num-a fg-red">0</span><span class="num num-b fg-red">0</span></div><div class="tip"><div class="tip-flags"><div>🚩 Portugal wins tiebreak &nbsp;↖</div><div>🚩 Congo DR wins tiebreak &nbsp;↘</div></div><div class="tip-title">Tiebreakers:</div><ol class="tip-list"><li>Overall goal difference <span class="tip-status">(Portugal leads by 4)</span></li><li>Overall goals scored <span class="tip-status">(Portugal leads by 4)</span></li><li>Fair play ranking <span class="tip-status">(Congo DR leads by 2)</span></li><li>Official seeding <span class="tip-status">(Portugal ahead)</span></li></ol></div></td></tr><tr class="tip-flip"><td><div class="match-line"><span class="pill pill-win">Colombia</span><span class="pill pill-loss">Portugal</span></div><div class="match-line"><span class="pill pill-draw">Congo DR</span><span class="pill pill-draw">Uzbekistan</span></div></td><td class="score score-red">4</td><td class="score score-red">4</td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-red">4</td><td class="score score-green">16</td><td class="score score-green">10</td><td class="score score-red">4</td><td class="score score-red">4</td><td class="score score-green">16</td><td class="score score-red">0</td></tr><tr class="tip-flip"><td><div class="match-line"><span class="pill pill-win">Colombia</span><span class="pill pill-loss">Portugal</span></div><div class="match-line"><span class="pill pill-loss">Congo DR</span><span class="pill pill-win">Uzbekistan</span></div></td><td class="score score-red">0</td><td class="score score-red">0</td><td class="score score-green">10</td><td class="score score-green">10</td><td class="score score-red">0</td><td class="score score-green">10</td><td class="score score-green">16</td><td class="score score-red">0</td><td class="score score-red">0</td><td class="score score-green">10</td><td class="score score-red">4</td></tr><tr class="tip-flip"><td><div class="match-line"><span class="pill pill-draw">Colombia</span><span class="pill pill-draw">Portugal</span></div><div class="match-line"><span class="pill pill-win">Congo DR</span><span class="pill pill-loss">Uzbekistan</span></div></td><td class="score score-red">4</td><td class="score score-red">4</td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-red">4</td><td class="score score-green">16</td><td class="score score-green">10</td><td class="score score-red">4</td><td class="score score-red">4</td><td class="score score-green">16</td><td class="score score-red">0</td></tr><tr><td><div class="match-line"><span class="pill pill-draw">Colombia</span><span class="pill pill-draw">Portugal</span></div><div class="match-line"><span class="pill pill-draw">Congo DR</span><span class="pill pill-draw">Uzbekistan</span></div></td><td class="score score-red">4</td><td class="score score-red">4</td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-red">4</td><td class="score score-green">16</td><td class="score score-green">10</td><td class="score score-red">4</td><td class="score score-red">4</td><td class="score score-green">16</td><td class="score score-red">0</td></tr><tr><td><div class="match-line"><span class="pill pill-draw">Colombia</span><span class="pill pill-draw">Portugal</span></div><div class="match-line"><span class="pill pill-loss">Congo DR</span><span class="pill pill-win">Uzbekistan</span></div></td><td class="score score-red">0</td><td class="score score-red">0</td><td class="score score-green">10</td><td class="score score-green">10</td><td class="score score-red">0</td><td class="score score-green">10</td><td class="score score-green">16</td><td class="score score-red">0</td><td class="score score-red">0</td><td class="score score-green">10</td><td class="score score-red">4</td></tr><tr class="chalk"><td><div class="match-line"><span class="pill pill-loss">Colombia</span><span class="pill pill-win">Portugal</span></div><div class="match-line"><span class="pill pill-win">Congo DR</span><span class="pill pill-loss">Uzbekistan</span></div></td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-red">4</td><td class="score score-red">4</td><td class="score score-green">16</td><td class="score score-red">4</td><td class="score score-red">0</td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-red">4</td><td class="score score-green">10</td></tr><tr><td><div class="match-line"><span class="pill pill-loss">Colombia</span><span class="pill pill-win">Portugal</span></div><div class="match-line"><span class="pill pill-draw">Congo DR</span><span class="pill pill-draw">Uzbekistan</span></div></td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-red">4</td><td class="score score-red">4</td><td class="score score-green">16</td><td class="score score-red">4</td><td class="score score-red">0</td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-red">4</td><td class="score score-green">10</td></tr><tr><td><div class="match-line"><span class="pill pill-loss">Colombia</span><span class="pill pill-win">Portugal</span></div><div class="match-line"><span class="pill pill-loss">Congo DR</span><span class="pill pill-win">Uzbekistan</span></div></td><td class="score score-green">10</td><td class="score score-green">10</td><td class="score score-red">0</td><td class="score score-red">0</td><td class="score score-green">10</td><td class="score score-red">0</td><td class="score score-red">4</td><td class="score score-green">10</td><td class="score score-green">10</td><td class="score score-red">0</td><td class="score score-green">16</td></tr></table></div><p class="small" style="margin-top:10px;"><span class="tag-best">Karly, Art, Kim, Dion, and Tommy</span> are one result from a flawless 16, just need “Portugal win & Congo DR win” to go down.</p></div><div class="card"><span class="badge">Group J</span><h3>Algeria vs. Austria &amp; Jordan vs. Argentina &middot; 7pm PT</h3><p class="small" style="margin:8px 0 0;">Entering today: Argentina (6 pts), Austria (3 pts), Algeria (3 pts), Jordan (0 pts). Austria is barely ahead of Algeria — about as close to a coin flip as this slate gets. There's a real chance this one ends level. Argentina is a heavy favorite over Jordan.</p><div class="table-scroll"><table class="scenario"><tr><th>If this happens</th><th>Karly</th><th>Art</th><th>John</th><th>Adam</th><th>Kim</th><th>Travis</th><th>Alex</th><th>Dion</th><th>Tommy</th><th>Mike</th><th>Sean</th></tr><tr class="tip-flip"><td><div class="match-line"><span class="pill pill-win">Algeria</span><span class="pill pill-loss">Austria</span></div><div class="match-line"><span class="pill pill-win">Jordan</span><span class="pill pill-loss">Argentina</span></div></td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-green">16</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-green">16</td></tr><tr class="tip-flip"><td><div class="match-line"><span class="pill pill-win">Algeria</span><span class="pill pill-loss">Austria</span></div><div class="match-line"><span class="pill pill-draw">Jordan</span><span class="pill pill-draw">Argentina</span></div></td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-green">16</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-green">16</td></tr><tr class="tip-flip"><td><div class="match-line"><span class="pill pill-win">Algeria</span><span class="pill pill-loss">Austria</span></div><div class="match-line"><span class="pill pill-loss">Jordan</span><span class="pill pill-win">Argentina</span></div></td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-green">16</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-green">16</td></tr><tr class="tip-flip"><td><div class="match-line"><span class="pill pill-draw">Algeria</span><span class="pill pill-draw">Austria</span></div><div class="match-line"><span class="pill pill-win">Jordan</span><span class="pill pill-loss">Argentina</span></div></td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-yellow">7</td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td></tr><tr><td><div class="match-line"><span class="pill pill-draw">Algeria</span><span class="pill pill-draw">Austria</span></div><div class="match-line"><span class="pill pill-draw">Jordan</span><span class="pill pill-draw">Argentina</span></div></td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-yellow">7</td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td></tr><tr><td><div class="match-line"><span class="pill pill-draw">Algeria</span><span class="pill pill-draw">Austria</span></div><div class="match-line"><span class="pill pill-loss">Jordan</span><span class="pill pill-win">Argentina</span></div></td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-yellow">7</td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td></tr><tr><td><div class="match-line"><span class="pill pill-loss">Algeria</span><span class="pill pill-win">Austria</span></div><div class="match-line"><span class="pill pill-win">Jordan</span><span class="pill pill-loss">Argentina</span></div></td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-yellow">7</td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td></tr><tr><td><div class="match-line"><span class="pill pill-loss">Algeria</span><span class="pill pill-win">Austria</span></div><div class="match-line"><span class="pill pill-draw">Jordan</span><span class="pill pill-draw">Argentina</span></div></td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-yellow">7</td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td></tr><tr class="chalk"><td><div class="match-line"><span class="pill pill-loss">Algeria</span><span class="pill pill-win">Austria</span></div><div class="match-line"><span class="pill pill-loss">Jordan</span><span class="pill pill-win">Argentina</span></div></td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-yellow">7</td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-green">16</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td><td class="score score-yellow">7</td></tr></table></div><p class="small" style="margin-top:10px;">A perfect group is sitting right there for <span class="tag-best">John, Alex, Dion, Tommy, Mike, and Sean</span> if “Algeria win & Jordan win” happens tonight.</p></div><h2>Tonight’s chalk math</h2><div class="callout">If every favorite wins exactly as the odds suggest across all three groups today, <span class="tag-best">Karly</span> comes out best at 48 of a possible 48 points, while <span class="tag-worst">Mike</span> brings up the rear at 11. The colored grids above show exactly how that flips if any of today’s games go the other way.</div><p class="small">Groups J, K, and L wrap up the group stage today, completing all twelve groups. The knockout-stage bracket isn’t modeled here yet.</p>
-<footer>Odds via CBS Sports; standings and results via FIFA.com. Scoring: 5 pts exact 1st/2nd, 2 pts exact 3rd/4th, +2 bonus for a perfect group (max 16/group). Times shown are Pacific.</footer>
+
+  <header class="top">
+    <div class="kicker">Cuppies &amp; Group 2 · World Cup 2026 Pool</div>
+    <h1>🏆 The Daily Cup-Date</h1>
+    <div class="date">Monday, June 29, 2026 — Recapping Sunday's Round of 32 opener &amp; previewing today's slate</div>
+  </header>
+
+  <section>
+    <h2 class="section-title">📊 Leaderboard — Points Gained Yesterday</h2>
+    <table class="board">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Player</th>
+          <th>Total</th>
+          <th>Yesterday</th>
+          <th>Champion Pick</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="rank">1</td><td class="player">Karly</td><td>148</td><td class="delta up">+5</td><td><span class="pick-pill">🇫🇷 France</span></td></tr>
+        <tr><td class="rank">2</td><td class="player">John</td><td>128</td><td class="delta flat">+0</td><td><span class="pick-pill">🇫🇷 France</span></td></tr>
+        <tr><td class="rank">2</td><td class="player">Travis</td><td>128</td><td class="delta up">+5</td><td><span class="pick-pill">🇪🇸 Spain</span></td></tr>
+        <tr><td class="rank">4</td><td class="player">Adam</td><td>127</td><td class="delta flat">+0</td><td><span class="pick-pill">🇦🇷 Argentina</span></td></tr>
+        <tr><td class="rank">5</td><td class="player">Kim</td><td>120</td><td class="delta up">+5</td><td><span class="pick-pill">🇦🇷 Argentina</span></td></tr>
+        <tr><td class="rank">5</td><td class="player">Art</td><td>120</td><td class="delta flat">+0</td><td><span class="pick-pill">🇫🇷 France</span></td></tr>
+        <tr><td class="rank">7</td><td class="player">Tommy</td><td>102</td><td class="delta up">+5</td><td><span class="pick-pill">🇦🇷 Argentina</span></td></tr>
+        <tr class="me"><td class="rank">8</td><td class="player">Alex</td><td>101</td><td class="delta up">+5</td><td><span class="pick-pill">🏴󠁧󠁢󠁥󠁮󠁧󠁿 England</span></td></tr>
+        <tr><td class="rank">9</td><td class="player">Dion</td><td>97</td><td class="delta flat">+0</td><td><span class="pick-pill">🇲🇽 Mexico</span></td></tr>
+        <tr><td class="rank">10</td><td class="player">Mike</td><td>96</td><td class="delta up">+5</td><td><span class="pick-pill">🇳🇱 Netherlands</span></td></tr>
+        <tr><td class="rank">11</td><td class="player">Sean</td><td>69</td><td class="delta flat">+0</td><td><span class="pick-pill">🇺🇸 USA</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2 class="section-title">📰 Yesterday's Carnage — Sunday, June 28</h2>
+    <div class="recap-card">
+      <div class="score-line">🇿🇦 South Africa 0 <span class="vs">FT</span> 1 Canada 🇨🇦</div>
+      <div class="score-sub">SoFi Stadium, Los Angeles · Winner: Stephen Eustáquio, deep into stoppage time</div>
+      <p>Bafana Bafana's first-ever Round of 32 appearance ended exactly the way feel-good stories usually end in this group chat: with someone's bracket getting gut-punched in the 90th-plus minute. Canada, who has never sniffed a Round of 16 in program history, snuck through on a stoppage-time dagger and immediately became the most important team in this pool that nobody actually cares about.</p>
+      <p>Six of you saw this coming (or got lucky and won't admit it): <b>Karly, Travis, Kim, Tommy, Alex, and Mike</b> all had Canada and banked a free 5 points before most of you had even opened the app. The other five — <b>John, Adam, Dion, Sean, and Art</b> — bet on the underdog narrative and got nothing but the satisfaction of being wrong together.</p>
+      <p>Special mention to <b>Sean</b>, who picked South Africa, got zero points, and is still dead last with 69 — the only person in this pool currently losing to the concept of "participation."</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">📅 Today's Slate — Monday, June 29 (Pacific Time)</h2>
+
+    <div class="game-card">
+      <div class="game-head">
+        <div class="matchup">🇧🇷 Brazil vs 🇯🇵 Japan</div>
+        <div class="game-meta">10:00 AM PT · NRG Stadium, Houston</div>
+      </div>
+      <p>Brazil cruised through Group C, looking like the best version of themselves with Vinícius Jr. on a four-goal heater and squarely in the Golden Boot conversation. Japan finished second in Group F, unbeaten, and have somehow still never won a World Cup knockout match in four tries — though they did beat Brazil in a friendly back in October 2025, so they at least have one recent receipt to wave around.</p>
+      <p>Vegas isn't worried: Brazil are <span class="odds-tag">-145 ML / -320 to advance</span>. This is the "show up and don't overthink it" pick of the day.</p>
+      <div class="picks-block">
+        <div class="side">🇧🇷 <b>Brazil:</b> Karly, John, Travis, Adam, Kim, Tommy, Alex, Dion, Art (9 backers)</div>
+        <div class="side">🇯🇵 <b>Japan:</b> Mike, Sean (2 backers — riding the October revenge-game vibes into a knockout match. Brave. Probably wrong.)</div>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <div class="game-head">
+        <div class="matchup">🇩🇪 Germany vs 🇵🇾 Paraguay</div>
+        <div class="game-meta">1:30 PM PT · Gillette Stadium, Boston</div>
+      </div>
+      <p>Germany topped Group E and are playing their first knockout match since they last won the whole thing in 2014 — no pressure. Paraguay snuck in as one of the eight best third-place finishers and have played five career World Cup knockout games without scoring a single goal in any of them. That streak is not expected to end today.</p>
+      <p>Germany are <span class="odds-tag">-280 ML / -700 to advance</span>, with Opta giving them a 78.6% chance to reach the Round of 16. This is as close to a free square as this pool gets.</p>
+      <div class="picks-block">
+        <div class="side">🇩🇪 <b>Germany:</b> Karly, John, Travis, Adam, Kim, Tommy, Alex, Dion, Mike, Sean, Art (all 11 — unanimous, boring, correct)</div>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <div class="game-head">
+        <div class="matchup">🇳🇱 Netherlands vs 🇲🇦 Morocco</div>
+        <div class="game-meta">6:00 PM PT · Estadio BBVA, Monterrey</div>
+      </div>
+      <p>Both teams arrive unbeaten — the Dutch won Group F outright, while Morocco finished second behind Brazil on goal difference despite never losing. This is being called the pick of the round: the Netherlands have the flashier attack with Brian Brobbey and Cody Gakpo, but Morocco is disciplined, dangerous through Brahim Díaz and Ismael Saibari, and built exactly to drag a favorite into a long, miserable night.</p>
+      <p>Market has it close: <span class="odds-tag">NED +115 ML</span>, with implied probabilities around 46% Netherlands, 25% Morocco, 31% draw. Genuinely the only game tonight where an upset wouldn't be shocking.</p>
+      <div class="picks-block">
+        <div class="side">🇳🇱 <b>Netherlands:</b> Karly, John, Adam, Kim, Tommy, Alex, Dion, Mike, Sean, Art (10 backers)</div>
+        <div class="side">🇲🇦 <b>Morocco:</b> Travis (1 lone backer — currently tied for 2nd place and decided tonight was the night to go rogue. Either he's seen something the rest of you haven't, or he's about to torch a perfectly good bracket for fun.)</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">🔮 Path to Glory (or Ruin)</h2>
+    <p style="color:var(--muted);font-size:13.5px;margin-bottom:16px;">Reality check up front: it's Round of 32, Game 1 of 16. With 315 points still in play, literally nobody is mathematically eliminated yet — even Sean. That said, "alive" and "has a real chance" are very different things. Outright odds below are real market prices as of today.</p>
+
+    <div class="ptw-card">
+      <div class="ptw-head"><div class="ptw-name">1. Karly — 148 pts</div><span class="ptw-tag tag-alive">In Control</span></div>
+      <div class="ptw-meta">Champion pick: 🇫🇷 France (+340, the betting favorite)</div>
+      <p>Leading the pool while backing the actual favorite to win the whole tournament. There is no twist here, no clever angle — just the most infuriatingly correct bracket in the group. Needs France to basically do what France is supposed to do. Boring. Effective. Annoying.</p>
+    </div>
+
+    <div class="ptw-card">
+      <div class="ptw-head"><div class="ptw-name">2. John — 128 pts</div><span class="ptw-tag tag-alive">Alive</span></div>
+      <div class="ptw-meta">Champion pick: 🇫🇷 France (+340)</div>
+      <p>Also on France, also stuck 20 points behind Karly with the same horse — meaning his entire path to first place is just hoping he picked France's run slightly better in the later rounds. Watched his South Africa pick die before lunch yesterday. Off to a "fine" start.</p>
+    </div>
+
+    <div class="ptw-card">
+      <div class="ptw-head"><div class="ptw-name">2. Travis — 128 pts</div><span class="ptw-tag tag-alive">Alive (and unhinged)</span></div>
+      <div class="ptw-meta">Champion pick: 🇪🇸 Spain (+650)</div>
+      <p>Tied for 2nd, riding a top-3 favorite, and yet tonight he's the only person in the entire pool picking Morocco over the Netherlands. Confidence or chaos — hard to tell which, but it's the most interesting bracket in the group right now.</p>
+    </div>
+
+    <div class="ptw-card">
+      <div class="ptw-head"><div class="ptw-name">4. Adam — 127 pts</div><span class="ptw-tag tag-alive">Alive</span></div>
+      <div class="ptw-meta">Champion pick: 🇦🇷 Argentina (+410, co-favorite)</div>
+      <p>One golden generation deep run away from making this whole pool very uncomfortable. Sitting just outside the top tier with a real contender. The most legitimately dangerous "boring" bracket in the field.</p>
+    </div>
+
+    <div class="ptw-card">
+      <div class="ptw-head"><div class="ptw-name">5. Kim — 120 pts</div><span class="ptw-tag tag-alive">Alive</span></div>
+      <div class="ptw-meta">Champion pick: 🇦🇷 Argentina (+410)</div>
+      <p>Also on Argentina, which means she's competing with two other people in this pool for credit on the same team. If Messi & co. go all the way, congrats — you'll still have to fight Adam and Tommy for bragging rights.</p>
+    </div>
+
+    <div class="ptw-card">
+      <div class="ptw-head"><div class="ptw-name">5. Art — 120 pts</div><span class="ptw-tag tag-alive">Alive</span></div>
+      <div class="ptw-meta">Champion pick: 🇫🇷 France (+340)</div>
+      <p>The "one last entry" addition shows up, quietly takes the betting favorite, and lands in a tie for 5th on her first appearance in this recap. No flair, no chaos — just efficient, faintly suspicious competence.</p>
+    </div>
+
+    <div class="ptw-card">
+      <div class="ptw-head"><div class="ptw-name">7. Tommy — 102 pts</div><span class="ptw-tag tag-slim">Slim</span></div>
+      <div class="ptw-meta">Champion pick: 🇦🇷 Argentina (+410)</div>
+      <p>The third person riding Argentina, now 46 points back of Karly. Even if the pick hits, he's got Adam and Kim to out-score along the way just to matter. Picking the same team as two rivals is not a strategy, it's a support group.</p>
+    </div>
+
+    <div class="ptw-card">
+      <div class="ptw-head"><div class="ptw-name">8. Alex — 101 pts</div><span class="ptw-tag tag-slim">Slim</span></div>
+      <div class="ptw-meta">Champion pick: 🏴󠁧󠁢󠁥󠁮󠁧󠁿 England (+700)</div>
+      <p>47 points off the lead with the Three Lions as the parachute. England at +700 is respectable, but "respectable longshot" still means needing several other brackets to collapse on the way up. At least the England pick is original — that's something.</p>
+    </div>
+
+    <div class="ptw-card">
+      <div class="ptw-head"><div class="ptw-name">9. Dion — 97 pts</div><span class="ptw-tag tag-dead">Cooked</span></div>
+      <div class="ptw-meta">Champion pick: 🇲🇽 Mexico (+5500)</div>
+      <p>Not mathematically eliminated — technically nobody is — but a +5500 shot from 51 points back is the kind of "alive" that's only true on paper. Mexico would need to pull off a run nobody outside Mexico City believes in. Bold pick. Bad timeline.</p>
+    </div>
+
+    <div class="ptw-card">
+      <div class="ptw-head"><div class="ptw-name">10. Mike — 96 pts</div><span class="ptw-tag tag-dead">Cooked</span></div>
+      <div class="ptw-meta">Champion pick: 🇳🇱 Netherlands (+1800)</div>
+      <p>52 back of the lead with a +1800 shot, and now also the proud co-owner of today's Japan upset special. Building quite the contrarian portfolio — just not the kind that wins pools.</p>
+    </div>
+
+    <div class="ptw-card">
+      <div class="ptw-head"><div class="ptw-name">11. Sean — 69 pts</div><span class="ptw-tag tag-dead">Cooked</span></div>
+      <div class="ptw-meta">Champion pick: 🇺🇸 USA (+3500)</div>
+      <p>Dead last, riding a +3500 shot, and already 0-for-1 today on the Japan pick. Mathematically alive in the most technical sense possible — the same way a lottery ticket in a drawer is technically still a winner until it isn't. Needs a miracle. Several, actually.</p>
+    </div>
+  </section>
+
+  <footer>
+    Cuppies &amp; Group 2 combined · Scoring: Group Stage 5/5/2/2 (+2 perfect bonus) · Knockout R32 5pts · R16 10pts · QF 15pts · SF 25pts · Final 50pts · Built for preview before posting.
+  </footer>
+
 </div>
-<script>
-document.querySelectorAll('td.split-cell').forEach(function (cell) {
-  cell.addEventListener('click', function (e) {
-    var wasOpen = cell.classList.contains('tip-open');
-    document.querySelectorAll('td.split-cell.tip-open').forEach(function (c) {
-      if (c !== cell) c.classList.remove('tip-open');
-    });
-    cell.classList.toggle('tip-open', !wasOpen);
-    e.stopPropagation();
-  });
-});
-document.addEventListener('click', function () {
-  document.querySelectorAll('td.split-cell.tip-open').forEach(function (c) {
-    c.classList.remove('tip-open');
-  });
-});
-</script>
 </body>
 </html>
