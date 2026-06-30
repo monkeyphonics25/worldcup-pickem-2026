@@ -2,371 +2,374 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Cuppies Daily Update — World Cup 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuppies World Cup Pick'em — Daily Update</title>
 <style>
   :root{
-    --navy:#0c1b2e;
-    --navy2:#132840;
-    --green:#16a085;
-    --green2:#1abc9c;
-    --red:#e74c3c;
-    --gold:#f1c40f;
-    --text:#e8eef5;
-    --muted:#9fb3c8;
-    --card:#15304a;
-    --border:#234a68;
+    --bg:#0b1c2c;
+    --bg2:#0f2740;
+    --card:#132e4a;
+    --card2:#0f2236;
+    --accent:#ffd166;
+    --accent2:#06d6a0;
+    --red:#ef476f;
+    --text:#eaf2f8;
+    --muted:#9fb6cc;
+    --border:#1f3f5e;
   }
   *{box-sizing:border-box;}
   body{
     margin:0;
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    background:linear-gradient(180deg,var(--navy) 0%, #0a1622 100%);
+    background:linear-gradient(180deg,var(--bg),var(--bg2) 400px,var(--bg) 100%);
     color:var(--text);
     line-height:1.5;
   }
-  .wrap{max-width:920px;margin:0 auto;padding:24px 18px 80px;}
-  header.top{
+  .wrap{max-width:900px;margin:0 auto;padding:24px 18px 80px;}
+  header.hero{
     text-align:center;
     padding:36px 16px 28px;
+    border-bottom:3px solid var(--accent);
+    margin-bottom:32px;
   }
-  header.top .kicker{
-    color:var(--green2);
-    letter-spacing:3px;
-    font-size:12px;
-    font-weight:700;
-    text-transform:uppercase;
+  header.hero h1{
+    font-size:2.1rem;
+    margin:0 0 6px;
+    letter-spacing:-0.5px;
   }
-  header.top h1{
-    margin:8px 0 6px;
-    font-size:clamp(28px,5vw,42px);
-    line-height:1.15;
-  }
-  header.top .date{
+  header.hero .sub{
     color:var(--muted);
-    font-size:15px;
+    font-size:1rem;
   }
-  section{margin-top:42px;}
-  h2.section-title{
-    font-size:13px;
-    letter-spacing:2px;
+  .badge{
+    display:inline-block;
+    background:var(--accent);
+    color:#1a1a1a;
+    font-weight:700;
+    font-size:0.72rem;
     text-transform:uppercase;
-    color:var(--green2);
-    border-bottom:1px solid var(--border);
-    padding-bottom:10px;
-    margin-bottom:18px;
+    letter-spacing:0.06em;
+    padding:3px 10px;
+    border-radius:20px;
+    margin-bottom:10px;
+  }
+  section{margin-bottom:48px;}
+  h2.section-title{
+    font-size:1.5rem;
+    margin:0 0 4px;
     display:flex;
     align-items:center;
-    gap:8px;
+    gap:10px;
   }
-  table.board{
+  .section-title .num{
+    background:var(--accent2);
+    color:#06281f;
+    width:30px;height:30px;
+    border-radius:8px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1rem;font-weight:800;
+    flex-shrink:0;
+  }
+  .section-sub{color:var(--muted);font-size:0.92rem;margin:0 0 18px;}
+  table{
     width:100%;
     border-collapse:collapse;
     background:var(--card);
     border-radius:12px;
     overflow:hidden;
-    font-size:14.5px;
+    box-shadow:0 4px 18px rgba(0,0,0,0.25);
   }
-  table.board th{
+  th,td{
+    padding:11px 12px;
     text-align:left;
-    background:#0f2236;
-    color:var(--muted);
-    font-size:11px;
-    letter-spacing:1px;
-    text-transform:uppercase;
-    padding:12px 10px;
+    border-bottom:1px solid var(--border);
+    font-size:0.94rem;
   }
-  table.board td{
-    padding:12px 10px;
-    border-top:1px solid var(--border);
+  th{
+    background:var(--card2);
+    color:var(--accent);
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+  }
+  tr:last-child td{border-bottom:none;}
+  td.rank{font-weight:800;color:var(--accent);width:36px;}
+  td.delta{color:var(--accent2);font-weight:700;}
+  td.delta.zero{color:var(--muted);font-weight:400;}
+  .tag{
+    display:inline-block;
+    font-size:0.68rem;
+    font-weight:700;
+    text-transform:uppercase;
+    background:var(--red);
+    color:#fff;
+    padding:2px 7px;
+    border-radius:6px;
+    margin-left:6px;
     vertical-align:middle;
   }
-  table.board tr.me td{background:rgba(26,188,156,0.08);}
-  .rank{font-weight:800;color:var(--gold);width:30px;}
-  .player{font-weight:700;}
-  .delta{font-weight:800;}
-  .delta.up{color:#2ecc71;}
-  .delta.flat{color:#7f8c9b;}
-  .pick-pill{
-    display:inline-block;
-    background:#0f2236;
-    border:1px solid var(--border);
-    border-radius:20px;
-    padding:3px 10px;
-    font-size:12px;
-    color:var(--muted);
-  }
-  .recap-card{
+  .recap p{margin:0 0 14px;}
+  .match-recap{
     background:var(--card);
-    border:1px solid var(--border);
-    border-radius:14px;
-    padding:22px 22px 18px;
+    border-left:4px solid var(--accent2);
+    border-radius:8px;
+    padding:14px 16px;
+    margin-bottom:14px;
   }
-  .score-line{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:18px;
-    font-size:clamp(22px,4vw,30px);
-    font-weight:800;
-    margin:6px 0 14px;
-  }
-  .score-line .vs{color:var(--muted);font-size:14px;font-weight:600;}
-  .score-sub{
-    text-align:center;
-    color:var(--muted);
-    font-size:13px;
-    margin-bottom:18px;
-  }
-  .recap-card p{margin:0 0 12px;font-size:15px;}
-  .recap-card p:last-child{margin-bottom:0;}
-  .winners-row, .losers-row{
-    margin-top:10px;
-    font-size:14px;
-  }
-  .winners-row b{color:#2ecc71;}
-  .losers-row b{color:var(--red);}
+  .match-recap .score{font-weight:800;color:var(--accent);}
   .game-card{
     background:var(--card);
-    border:1px solid var(--border);
-    border-radius:14px;
-    padding:20px 22px;
-    margin-bottom:18px;
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:22px;
+    box-shadow:0 4px 18px rgba(0,0,0,0.25);
   }
-  .game-head{
-    display:flex;
-    flex-wrap:wrap;
-    align-items:baseline;
-    justify-content:space-between;
-    gap:8px;
+  .game-card .time{
+    color:var(--accent);
+    font-weight:800;
+    font-size:0.85rem;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
     margin-bottom:6px;
   }
-  .matchup{font-size:19px;font-weight:800;}
-  .game-meta{color:var(--muted);font-size:13px;}
-  .game-card p{font-size:14.5px;margin:10px 0;}
-  .odds-tag{
-    display:inline-block;
-    background:rgba(241,196,15,0.12);
-    color:var(--gold);
-    border:1px solid rgba(241,196,15,0.35);
+  .game-card h3{
+    margin:0 0 6px;
+    font-size:1.3rem;
+  }
+  .game-card .venue{color:var(--muted);font-size:0.88rem;margin-bottom:14px;}
+  .game-card .blurb p{margin:0 0 10px;}
+  .picks-box{
+    background:var(--card2);
     border-radius:8px;
-    padding:2px 8px;
-    font-size:12px;
-    font-weight:700;
-    margin-left:6px;
+    padding:12px 14px;
+    margin-top:12px;
+    font-size:0.92rem;
   }
-  .picks-block{
-    margin-top:14px;
-    padding-top:12px;
-    border-top:1px dashed var(--border);
-    font-size:13.5px;
-  }
-  .picks-block .side{margin-bottom:6px;}
-  .picks-block .side b{color:var(--text);}
-  .ptw-card{
+  .picks-box strong{color:var(--accent);}
+  .person-card{
     background:var(--card);
-    border:1px solid var(--border);
-    border-radius:14px;
-    padding:16px 20px;
-    margin-bottom:12px;
+    border-radius:12px;
+    padding:16px 18px;
+    margin-bottom:14px;
+    box-shadow:0 4px 14px rgba(0,0,0,0.2);
   }
-  .ptw-head{
+  .person-card h4{
+    margin:0 0 6px;
+    font-size:1.1rem;
     display:flex;
     align-items:center;
-    justify-content:space-between;
-    flex-wrap:wrap;
     gap:8px;
   }
-  .ptw-name{font-size:16px;font-weight:800;}
-  .ptw-tag{
-    font-size:11px;
-    font-weight:800;
+  .person-card .stat-line{
+    color:var(--muted);
+    font-size:0.84rem;
+    margin-bottom:8px;
+  }
+  .person-card p{margin:0;font-size:0.95rem;}
+  .pill{
+    font-size:0.68rem;
+    font-weight:700;
     text-transform:uppercase;
-    letter-spacing:0.5px;
-    padding:3px 9px;
+    padding:2px 8px;
     border-radius:20px;
   }
-  .tag-alive{background:rgba(46,204,113,0.15);color:#2ecc71;border:1px solid rgba(46,204,113,0.4);}
-  .tag-slim{background:rgba(241,196,15,0.15);color:var(--gold);border:1px solid rgba(241,196,15,0.4);}
-  .tag-dead{background:rgba(231,76,60,0.15);color:var(--red);border:1px solid rgba(231,76,60,0.4);}
-  .ptw-meta{color:var(--muted);font-size:13px;margin:6px 0 8px;}
-  .ptw-card p{margin:0;font-size:14px;}
+  .pill.alive{background:rgba(6,214,160,0.18);color:var(--accent2);}
+  .pill.slim{background:rgba(255,209,102,0.18);color:var(--accent);}
+  .pill.toast{background:rgba(239,71,111,0.18);color:var(--red);}
+  .pill.secondonly{background:rgba(159,182,204,0.18);color:var(--muted);}
   footer{
     text-align:center;
     color:var(--muted);
-    font-size:12px;
-    margin-top:50px;
-    padding-top:20px;
+    font-size:0.82rem;
     border-top:1px solid var(--border);
+    padding-top:20px;
+    margin-top:40px;
   }
-  @media (max-width:600px){
-    table.board{font-size:12.5px;}
-    table.board th, table.board td{padding:9px 6px;}
+  .preview-note{
+    background:#3a2a0e;
+    border:1px solid var(--accent);
+    color:var(--accent);
+    border-radius:10px;
+    padding:10px 16px;
+    font-size:0.85rem;
+    text-align:center;
+    margin-bottom:28px;
   }
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <header class="top">
-    <div class="kicker">Cuppies &amp; Group 2 · World Cup 2026 Pool</div>
-    <h1>🏆 The Daily Cup-Date</h1>
-    <div class="date">Monday, June 29, 2026 — Recapping Sunday's Round of 32 opener &amp; previewing today's slate</div>
+  <header class="hero">
+    <div class="badge">Cuppies World Cup Pick'em</div>
+    <h1>🏆 Daily Bracket Update</h1>
+    <div class="sub">Round of 32 · Tuesday, June 30, 2026</div>
   </header>
 
+  <!-- SECTION 1: LEADERBOARD -->
   <section>
-    <h2 class="section-title">📊 Leaderboard — Points Gained Yesterday</h2>
-    <table class="board">
+    <h2 class="section-title"><span class="num">1</span>Leaderboard</h2>
+    <p class="section-sub">Sorted by total points. "Gained Mon 6/29" shows what each bracket picked up from yesterday's three matches.</p>
+    <table>
       <thead>
-        <tr>
-          <th>#</th>
-          <th>Player</th>
-          <th>Total</th>
-          <th>Yesterday</th>
-          <th>Champion Pick</th>
-        </tr>
+        <tr><th>#</th><th>Name</th><th>Total Pts</th><th>Ceiling</th><th>Gained Mon 6/29</th></tr>
       </thead>
       <tbody>
-        <tr><td class="rank">1</td><td class="player">Karly</td><td>148</td><td class="delta up">+5</td><td><span class="pick-pill">🇫🇷 France</span></td></tr>
-        <tr><td class="rank">2</td><td class="player">John</td><td>128</td><td class="delta flat">+0</td><td><span class="pick-pill">🇫🇷 France</span></td></tr>
-        <tr><td class="rank">2</td><td class="player">Travis</td><td>128</td><td class="delta up">+5</td><td><span class="pick-pill">🇪🇸 Spain</span></td></tr>
-        <tr><td class="rank">4</td><td class="player">Adam</td><td>127</td><td class="delta flat">+0</td><td><span class="pick-pill">🇦🇷 Argentina</span></td></tr>
-        <tr><td class="rank">5</td><td class="player">Kim</td><td>120</td><td class="delta up">+5</td><td><span class="pick-pill">🇦🇷 Argentina</span></td></tr>
-        <tr><td class="rank">5</td><td class="player">Art</td><td>120</td><td class="delta flat">+0</td><td><span class="pick-pill">🇫🇷 France</span></td></tr>
-        <tr><td class="rank">7</td><td class="player">Tommy</td><td>102</td><td class="delta up">+5</td><td><span class="pick-pill">🇦🇷 Argentina</span></td></tr>
-        <tr class="me"><td class="rank">8</td><td class="player">Alex</td><td>101</td><td class="delta up">+5</td><td><span class="pick-pill">🏴󠁧󠁢󠁥󠁮󠁧󠁿 England</span></td></tr>
-        <tr><td class="rank">9</td><td class="player">Dion</td><td>97</td><td class="delta flat">+0</td><td><span class="pick-pill">🇲🇽 Mexico</span></td></tr>
-        <tr><td class="rank">10</td><td class="player">Mike</td><td>96</td><td class="delta up">+5</td><td><span class="pick-pill">🇳🇱 Netherlands</span></td></tr>
-        <tr><td class="rank">11</td><td class="player">Sean</td><td>69</td><td class="delta flat">+0</td><td><span class="pick-pill">🇺🇸 USA</span></td></tr>
+        <tr><td class="rank">1</td><td>Karly 👑</td><td>153</td><td>443</td><td class="delta">+5</td></tr>
+        <tr><td class="rank">2</td><td>Travis</td><td>138</td><td>438</td><td class="delta">+10</td></tr>
+        <tr><td class="rank">3</td><td>John</td><td>133</td><td>423</td><td class="delta">+5</td></tr>
+        <tr><td class="rank">4</td><td>Adam</td><td>132</td><td>422</td><td class="delta">+5</td></tr>
+        <tr><td class="rank">5</td><td>Kim</td><td>125</td><td>415</td><td class="delta">+5</td></tr>
+        <tr><td class="rank">5</td><td>Art</td><td>125</td><td>415</td><td class="delta">+5</td></tr>
+        <tr><td class="rank">7</td><td>Tommy</td><td>107</td><td>397</td><td class="delta">+5</td></tr>
+        <tr><td class="rank">8</td><td>Alex</td><td>106</td><td>396</td><td class="delta">+5</td></tr>
+        <tr><td class="rank">9</td><td>Dion</td><td>102</td><td>352</td><td class="delta">+5</td></tr>
+        <tr><td class="rank">10</td><td>Mike</td><td>96</td><td>271</td><td class="delta zero">+0</td></tr>
+        <tr><td class="rank">11</td><td>Sean</td><td>69</td><td>349</td><td class="delta zero">+0</td></tr>
       </tbody>
     </table>
   </section>
 
-  <section>
-    <h2 class="section-title">📰 Yesterday's Carnage — Sunday, June 28</h2>
-    <div class="recap-card">
-      <div class="score-line">🇿🇦 South Africa 0 <span class="vs">FT</span> 1 Canada 🇨🇦</div>
-      <div class="score-sub">SoFi Stadium, Los Angeles · Winner: Stephen Eustáquio, deep into stoppage time</div>
-      <p>Bafana Bafana's first-ever Round of 32 appearance ended exactly the way feel-good stories usually end in this group chat: with someone's bracket getting gut-punched in the 90th-plus minute. Canada, who has never sniffed a Round of 16 in program history, snuck through on a stoppage-time dagger and immediately became the most important team in this pool that nobody actually cares about.</p>
-      <p>Six of you saw this coming (or got lucky and won't admit it): <b>Karly, Travis, Kim, Tommy, Alex, and Mike</b> all had Canada and banked a free 5 points before most of you had even opened the app. The other five — <b>John, Adam, Dion, Sean, and Art</b> — bet on the underdog narrative and got nothing but the satisfaction of being wrong together.</p>
-      <p>Special mention to <b>Sean</b>, who picked South Africa, got zero points, and is still dead last with 69 — the only person in this pool currently losing to the concept of "participation."</p>
+  <!-- SECTION 2: PREVIOUS DAY RECAP -->
+  <section class="recap">
+    <h2 class="section-title"><span class="num">2</span>Monday's Carnage</h2>
+    <p class="section-sub">Three games, three upsets, and a lot of brackets quietly dying.</p>
+
+    <div class="match-recap">
+      <p><strong>🇧🇷 Brazil 2–1 🇯🇵 Japan</strong></p>
+      <p>Japan actually led this thing 1–0 on a Sano goal before Casemiro dragged Brazil back level, and Martinelli broke hearts in the 90+5' with a stoppage-time winner. Nine of eleven brackets had Brazil here, so congratulations to the chalk-eaters — you correctly predicted that the 5-time champions would beat a team that, with all due respect, is not Brazil. Bold work. Mike and Sean rode with Japan, which means this loss didn't just cost them the game — Mike's entire bracket was already leaning on a deep Japan run, so add this to the pile.</p>
+    </div>
+
+    <div class="match-recap">
+      <p><strong>🇩🇪 Germany 1–1 🇵🇾 Paraguay</strong> <span class="score">(Paraguay wins 4–3 on penalties)</span></p>
+      <p>Germany — Germany! — got bounced by Paraguay on penalties after Havertz and friends couldn't find the net enough times from 12 yards. This is the second straight World Cup where Germany has made an early, embarrassing exit, and somewhere a German football federation executive is reaching for the aspirin. Literally nobody in this pool picked anything but Germany here, which means this one upset alone just torched everybody's bracket equally. A rare moment of pool-wide unity in collective failure.</p>
+    </div>
+
+    <div class="match-recap">
+      <p><strong>🇳🇱 Netherlands 1–1 🇲🇦 Morocco</strong> <span class="score">(Morocco wins 3–2 on penalties)</span></p>
+      <p>This is the one that actually matters, because Mike picked the Netherlands to win the entire World Cup. Not advance. Not make the final four. <em>Win the whole thing.</em> The Netherlands lost in the Round of 32, on penalties, to Morocco, and Mike's championship dream is now deader than a Brazil-Germany friendly nobody asked for. Meanwhile Travis is out here looking like Nostradamus — he's the only person in the entire pool who had the foresight (or just enough chaos energy) to pick Morocco to win not one but TWO rounds. Everyone else has a Netherlands-shaped hole where their bracket used to be.</p>
     </div>
   </section>
 
+  <!-- SECTION 3: TODAY'S SCHEDULE -->
   <section>
-    <h2 class="section-title">📅 Today's Slate — Monday, June 29 (Pacific Time)</h2>
+    <h2 class="section-title"><span class="num">3</span>Today's Slate — Tuesday, June 30 (Pacific Time)</h2>
+    <p class="section-sub">Three more Round of 32 matches. Three more chances for your bracket to either survive or die a slow, public death.</p>
 
     <div class="game-card">
-      <div class="game-head">
-        <div class="matchup">🇧🇷 Brazil vs 🇯🇵 Japan</div>
-        <div class="game-meta">10:00 AM PT · NRG Stadium, Houston</div>
-      </div>
-      <p>Brazil cruised through Group C, looking like the best version of themselves with Vinícius Jr. on a four-goal heater and squarely in the Golden Boot conversation. Japan finished second in Group F, unbeaten, and have somehow still never won a World Cup knockout match in four tries — though they did beat Brazil in a friendly back in October 2025, so they at least have one recent receipt to wave around.</p>
-      <p>Vegas isn't worried: Brazil are <span class="odds-tag">-145 ML / -320 to advance</span>. This is the "show up and don't overthink it" pick of the day.</p>
-      <div class="picks-block">
-        <div class="side">🇧🇷 <b>Brazil:</b> Karly, John, Travis, Adam, Kim, Tommy, Alex, Dion, Art (9 backers)</div>
-        <div class="side">🇯🇵 <b>Japan:</b> Mike, Sean (2 backers — riding the October revenge-game vibes into a knockout match. Brave. Probably wrong.)</div>
+      <div class="time">10:00 AM PT · AT&T Stadium, Arlington, TX</div>
+      <h3>🇨🇮 Ivory Coast vs 🇳🇴 Norway</h3>
+      <div class="venue">Round of 32</div>
+      <div class="blurb">
+        <p>Norway is the clear favorite here, mostly because Erling Haaland has spent this tournament treating opposing defenses like a personal highlight reel — four goals and counting. Ivory Coast is the scrappier, more organized side and has the talent to make this uncomfortable, but "uncomfortable" and "actually winning" are different things when the other team has the best striker on the planet having the best month of his career.</p>
+        <div class="picks-box">
+          <strong>Norway:</strong> Karly, Travis, John, Adam, Kim, Tommy, Dion, Alex, Sean, Art — basically the entire pool, because nobody wants to bet against a man who is currently allergic to missing.<br>
+          <strong>Ivory Coast:</strong> Mike — who, to be fair, has nothing left to lose at this point. His bracket already took the Netherlands to the chest. Might as well go down swinging.
+        </div>
       </div>
     </div>
 
     <div class="game-card">
-      <div class="game-head">
-        <div class="matchup">🇩🇪 Germany vs 🇵🇾 Paraguay</div>
-        <div class="game-meta">1:30 PM PT · Gillette Stadium, Boston</div>
-      </div>
-      <p>Germany topped Group E and are playing their first knockout match since they last won the whole thing in 2014 — no pressure. Paraguay snuck in as one of the eight best third-place finishers and have played five career World Cup knockout games without scoring a single goal in any of them. That streak is not expected to end today.</p>
-      <p>Germany are <span class="odds-tag">-280 ML / -700 to advance</span>, with Opta giving them a 78.6% chance to reach the Round of 16. This is as close to a free square as this pool gets.</p>
-      <div class="picks-block">
-        <div class="side">🇩🇪 <b>Germany:</b> Karly, John, Travis, Adam, Kim, Tommy, Alex, Dion, Mike, Sean, Art (all 11 — unanimous, boring, correct)</div>
+      <div class="time">2:00 PM PT · MetLife Stadium, East Rutherford, NJ</div>
+      <h3>🇫🇷 France vs 🇸🇪 Sweden</h3>
+      <div class="venue">Round of 32</div>
+      <div class="blurb">
+        <p>France is a heavy favorite here — Mbappé and company are rolling, and most books have them around a 75% win probability. Sweden snuck in as a third-place qualifier and has real firepower up top with Isak and Gyökeres, but their defense has been leaking goals all tournament, which is not the formula you want against the team that's currently the best in the world.</p>
+        <div class="picks-box">
+          <strong>France:</strong> Everyone. All eleven of you. Unanimous. The single most boring, correct, no-brainer pick in this entire pool, and it's also currently every championship dream's foundation for Karly, John, and Art, who all have France winning it all. No creativity, no risk, very France of you.
+        </div>
       </div>
     </div>
 
     <div class="game-card">
-      <div class="game-head">
-        <div class="matchup">🇳🇱 Netherlands vs 🇲🇦 Morocco</div>
-        <div class="game-meta">6:00 PM PT · Estadio BBVA, Monterrey</div>
-      </div>
-      <p>Both teams arrive unbeaten — the Dutch won Group F outright, while Morocco finished second behind Brazil on goal difference despite never losing. This is being called the pick of the round: the Netherlands have the flashier attack with Brian Brobbey and Cody Gakpo, but Morocco is disciplined, dangerous through Brahim Díaz and Ismael Saibari, and built exactly to drag a favorite into a long, miserable night.</p>
-      <p>Market has it close: <span class="odds-tag">NED +115 ML</span>, with implied probabilities around 46% Netherlands, 25% Morocco, 31% draw. Genuinely the only game tonight where an upset wouldn't be shocking.</p>
-      <div class="picks-block">
-        <div class="side">🇳🇱 <b>Netherlands:</b> Karly, John, Adam, Kim, Tommy, Alex, Dion, Mike, Sean, Art (10 backers)</div>
-        <div class="side">🇲🇦 <b>Morocco:</b> Travis (1 lone backer — currently tied for 2nd place and decided tonight was the night to go rogue. Either he's seen something the rest of you haven't, or he's about to torch a perfectly good bracket for fun.)</div>
+      <div class="time">6:00 PM PT · Estadio Azteca, Mexico City</div>
+      <h3>🇲🇽 Mexico vs 🇪🇨 Ecuador</h3>
+      <div class="venue">Round of 32</div>
+      <div class="blurb">
+        <p>Mexico gets a slight edge as the home team in front of an Azteca crowd that will be deafening, and they haven't conceded a goal yet this tournament. Ecuador, however, is no pushover — they snuck out of the group stage as a third-place qualifier by beating Germany, which, considering Germany just lost to Paraguay on penalties, is either a great résumé line or a sign that Ecuador peaked early. We'll find out which.</p>
+        <div class="picks-box">
+          <strong>Mexico:</strong> Karly, Travis, Adam, Kim, Dion, Alex, Art<br>
+          <strong>Ecuador:</strong> John, Tommy, Mike, Sean — and for Dion specifically, this is a must-win, since he's the one person brave (insane) enough to pick Mexico to win the entire tournament. No pressure, El Tri.
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- SECTION 4: PATH TO VICTORY -->
   <section>
-    <h2 class="section-title">🔮 Path to Glory (or Ruin)</h2>
-    <p style="color:var(--muted);font-size:13.5px;margin-bottom:16px;">Reality check up front: it's Round of 32, Game 1 of 16. With 315 points still in play, literally nobody is mathematically eliminated yet — even Sean. That said, "alive" and "has a real chance" are very different things. Outright odds below are real market prices as of today.</p>
+    <h2 class="section-title"><span class="num">4</span>Path to Victory</h2>
+    <p class="section-sub">$20 buy-in. 2nd place gets their $20 back. 1st place takes the rest of the pot. Tommy and John are mathematically locked out of 1st — too many of their picks overlap with brackets that are already ahead of them, so there's no scenario where the math works out in their favor — but both can still chase 2nd. Technically nobody else is mathematically eliminated from 1st yet — but "technically" is doing a lot of heavy lifting for some of these.</p>
 
-    <div class="ptw-card">
-      <div class="ptw-head"><div class="ptw-name">1. Karly — 148 pts</div><span class="ptw-tag tag-alive">In Control</span></div>
-      <div class="ptw-meta">Champion pick: 🇫🇷 France (+340, the betting favorite)</div>
-      <p>Leading the pool while backing the actual favorite to win the whole tournament. There is no twist here, no clever angle — just the most infuriatingly correct bracket in the group. Needs France to basically do what France is supposed to do. Boring. Effective. Annoying.</p>
+    <div class="person-card">
+      <h4>Karly <span class="pill alive">In control</span></h4>
+      <div class="stat-line">153 pts · ceiling 443 · 🇫🇷 France to win it all</div>
+      <p>Sitting in 1st with the cleanest bracket left in the pool and a championship pick that just unanimously cruised through Monday. Karly's path to victory is simple: keep doing exactly what she's doing and let everyone else implode.</p>
     </div>
 
-    <div class="ptw-card">
-      <div class="ptw-head"><div class="ptw-name">2. John — 128 pts</div><span class="ptw-tag tag-alive">Alive</span></div>
-      <div class="ptw-meta">Champion pick: 🇫🇷 France (+340)</div>
-      <p>Also on France, also stuck 20 points behind Karly with the same horse — meaning his entire path to first place is just hoping he picked France's run slightly better in the later rounds. Watched his South Africa pick die before lunch yesterday. Off to a "fine" start.</p>
+    <div class="person-card">
+      <h4>Travis <span class="pill alive">The real threat</span></h4>
+      <div class="stat-line">138 pts · ceiling 438 · 🇪🇸 Spain to win it all</div>
+      <p>Only 15 back of Karly and the only person who correctly bet on Morocco's run not once but twice. Travis is the lone entry with a legitimate, mathematically reasonable case to catch the leader — he just needs Karly's bracket to start bleeding while his Spain pick (who haven't even played their first knockout game yet) stays perfect.</p>
     </div>
 
-    <div class="ptw-card">
-      <div class="ptw-head"><div class="ptw-name">2. Travis — 128 pts</div><span class="ptw-tag tag-alive">Alive (and unhinged)</span></div>
-      <div class="ptw-meta">Champion pick: 🇪🇸 Spain (+650)</div>
-      <p>Tied for 2nd, riding a top-3 favorite, and yet tonight he's the only person in the entire pool picking Morocco over the Netherlands. Confidence or chaos — hard to tell which, but it's the most interesting bracket in the group right now.</p>
+    <div class="person-card">
+      <h4>John <span class="pill secondonly">2nd place only</span></h4>
+      <div class="stat-line">133 pts · ceiling 423 · 🇫🇷 France to win it all</div>
+      <p>Mathematically locked out of 1st — too many of his picks overlap with brackets that are already ahead of him, so there's no path to the top. But here's the funny part: John is currently sitting 3rd overall, ahead of four people who ARE still allowed to win the whole thing. He's basically playing a different, smaller game now — chasing Travis for the $20 consolation prize — and currently trails him by just 5 points.</p>
     </div>
 
-    <div class="ptw-card">
-      <div class="ptw-head"><div class="ptw-name">4. Adam — 127 pts</div><span class="ptw-tag tag-alive">Alive</span></div>
-      <div class="ptw-meta">Champion pick: 🇦🇷 Argentina (+410, co-favorite)</div>
-      <p>One golden generation deep run away from making this whole pool very uncomfortable. Sitting just outside the top tier with a real contender. The most legitimately dangerous "boring" bracket in the field.</p>
+    <div class="person-card">
+      <h4>Adam <span class="pill slim">Hanging around</span></h4>
+      <div class="stat-line">132 pts · ceiling 422 · 🇦🇷 Argentina to win it all</div>
+      <p>Eligible for 1st, 21 points off the lead, and his Argentina pick hasn't even kicked a ball yet. Not a bad spot, but he needs Karly and Travis to both stumble at the same time, which is asking a lot of the universe.</p>
     </div>
 
-    <div class="ptw-card">
-      <div class="ptw-head"><div class="ptw-name">5. Kim — 120 pts</div><span class="ptw-tag tag-alive">Alive</span></div>
-      <div class="ptw-meta">Champion pick: 🇦🇷 Argentina (+410)</div>
-      <p>Also on Argentina, which means she's competing with two other people in this pool for credit on the same team. If Messi & co. go all the way, congrats — you'll still have to fight Adam and Tommy for bragging rights.</p>
+    <div class="person-card">
+      <h4>Kim <span class="pill slim">Long shot</span></h4>
+      <div class="stat-line">125 pts · ceiling 415 · 🇦🇷 Argentina to win it all</div>
+      <p>Tied with Art, 28 back of the lead. Still technically alive for 1st, in the way that a lottery ticket is technically still in play before the drawing.</p>
     </div>
 
-    <div class="ptw-card">
-      <div class="ptw-head"><div class="ptw-name">5. Art — 120 pts</div><span class="ptw-tag tag-alive">Alive</span></div>
-      <div class="ptw-meta">Champion pick: 🇫🇷 France (+340)</div>
-      <p>The "one last entry" addition shows up, quietly takes the betting favorite, and lands in a tie for 5th on her first appearance in this recap. No flair, no chaos — just efficient, faintly suspicious competence.</p>
+    <div class="person-card">
+      <h4>Art <span class="pill slim">Long shot</span></h4>
+      <div class="stat-line">125 pts · ceiling 415 · 🇫🇷 France to win it all</div>
+      <p>Tied with Kim. Art's the lone entry from the second pool, paid her own $20 to be here, and is currently getting the same "technically alive" treatment as everyone else stuck in the back half of the field.</p>
     </div>
 
-    <div class="ptw-card">
-      <div class="ptw-head"><div class="ptw-name">7. Tommy — 102 pts</div><span class="ptw-tag tag-slim">Slim</span></div>
-      <div class="ptw-meta">Champion pick: 🇦🇷 Argentina (+410)</div>
-      <p>The third person riding Argentina, now 46 points back of Karly. Even if the pick hits, he's got Adam and Kim to out-score along the way just to matter. Picking the same team as two rivals is not a strategy, it's a support group.</p>
+    <div class="person-card">
+      <h4>Tommy <span class="pill secondonly">2nd place only — and losing</span></h4>
+      <div class="stat-line">107 pts · ceiling 397 · 🇦🇷 Argentina to win it all</div>
+      <p>Same deal as John — too many shared picks with brackets ahead of him means there's no mathematical path to 1st. But unlike John, Tommy isn't even winning the race for 2nd — he's currently 26 points behind John and being chased by half the field below him too. No path to the top prize and fading on the consolation one. Rough.</p>
     </div>
 
-    <div class="ptw-card">
-      <div class="ptw-head"><div class="ptw-name">8. Alex — 101 pts</div><span class="ptw-tag tag-slim">Slim</span></div>
-      <div class="ptw-meta">Champion pick: 🏴󠁧󠁢󠁥󠁮󠁧󠁿 England (+700)</div>
-      <p>47 points off the lead with the Three Lions as the parachute. England at +700 is respectable, but "respectable longshot" still means needing several other brackets to collapse on the way up. At least the England pick is original — that's something.</p>
+    <div class="person-card">
+      <h4>Alex <span class="pill slim">Respectfully, no</span></h4>
+      <div class="stat-line">106 pts · ceiling 396 · 🏴󠁧󠁢󠁥󠁮󠁧󠁿 England to win it all</div>
+      <p>47 points off the lead with England as the championship pick, which is its own special flavor of optimism. Mathematically alive, realistically building this whole section to be self-deprecating, which, fine, I deserve it.</p>
     </div>
 
-    <div class="ptw-card">
-      <div class="ptw-head"><div class="ptw-name">9. Dion — 97 pts</div><span class="ptw-tag tag-dead">Cooked</span></div>
-      <div class="ptw-meta">Champion pick: 🇲🇽 Mexico (+5500)</div>
-      <p>Not mathematically eliminated — technically nobody is — but a +5500 shot from 51 points back is the kind of "alive" that's only true on paper. Mexico would need to pull off a run nobody outside Mexico City believes in. Bold pick. Bad timeline.</p>
+    <div class="person-card">
+      <h4>Dion <span class="pill slim">Needs a miracle</span></h4>
+      <div class="stat-line">102 pts · ceiling 352 · 🇲🇽 Mexico to win it all</div>
+      <p>51 back, and his entire championship dream rides on Mexico winning six straight knockout matches starting with Ecuador tonight in front of their own fans. Bold pick. Currently looking like it might also be a brief one.</p>
     </div>
 
-    <div class="ptw-card">
-      <div class="ptw-head"><div class="ptw-name">10. Mike — 96 pts</div><span class="ptw-tag tag-dead">Cooked</span></div>
-      <div class="ptw-meta">Champion pick: 🇳🇱 Netherlands (+1800)</div>
-      <p>52 back of the lead with a +1800 shot, and now also the proud co-owner of today's Japan upset special. Building quite the contrarian portfolio — just not the kind that wins pools.</p>
+    <div class="person-card">
+      <h4>Mike <span class="pill toast">Functionally dead</span></h4>
+      <div class="stat-line">96 pts · ceiling 271 · 🇳🇱 Netherlands to win it all (eliminated Monday)</div>
+      <p>Not mathematically eliminated, but his championship pick — the Netherlands — already lost in the Round of 32 on penalties, and his other Final Four pick, Japan, is also dead. Mike's bracket isn't on life support, it's already at the funeral. The "ceiling" of 271 points is a polite fiction at this point.</p>
     </div>
 
-    <div class="ptw-card">
-      <div class="ptw-head"><div class="ptw-name">11. Sean — 69 pts</div><span class="ptw-tag tag-dead">Cooked</span></div>
-      <div class="ptw-meta">Champion pick: 🇺🇸 USA (+3500)</div>
-      <p>Dead last, riding a +3500 shot, and already 0-for-1 today on the Japan pick. Mathematically alive in the most technical sense possible — the same way a lottery ticket in a drawer is technically still a winner until it isn't. Needs a miracle. Several, actually.</p>
+    <div class="person-card">
+      <h4>Sean <span class="pill toast">Dead last, technically breathing</span></h4>
+      <div class="stat-line">69 pts · ceiling 349 · 🇺🇸 USA to win it all</div>
+      <p>Last place overall, but ironically has a higher ceiling left than Mike, since fewer of his deep picks have been blown up yet. Small comfort when you're sitting 84 points behind the leader with the worst score in the entire pool.</p>
     </div>
+
   </section>
 
   <footer>
-    Cuppies &amp; Group 2 combined · Scoring: Group Stage 5/5/2/2 (+2 perfect bonus) · Knockout R32 5pts · R16 10pts · QF 15pts · SF 25pts · Final 50pts · Built for preview before posting.
+    Cuppies + Group 2 combined leaderboard · $20 buy-in · 2nd place refunded, 1st place takes the pot · Updated through Monday, June 29 results
   </footer>
 
 </div>
